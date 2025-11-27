@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adopte un Ami — Accueil</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg,#fffaf0,#fff3e6);
+      color:#222;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* EN-TÊTE 1 */
+    .top-header{
+      background:#aa7e62;
+      color:white;
+      padding:30px;
+      text-align:center;
+      font-size:26px;
+      font-weight:700;
+      box-shadow:0 3px 6px rgba(0,0,0,0.15);
+    }
+
+    /* EN-TÊTE 2 (NAV) */
+    nav{
+      background:#582900;
+      padding:50px 20px;
+      display:flex;
+      justify-content:center;
+      gap:28px;
+      font-size:16px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+    nav a{color:#fff;text-decoration:none;font-weight:600}
+    nav a:hover{text-decoration:underline}
+
+    /* CONTENU */
+    .container{max-width:1100px;margin:28px auto;padding:0 16px;width:100%}
+    .info{background:rgba(255,255,255,0.9);padding:26px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.06);text-align:center}
+    .info h2{font-size:28px;margin-bottom:10px}
+    .info p{color:#444;line-height:1.5}
+
+    /* BARRE DE FILTRE */
+    .filter-bar{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      margin:18px 0 10px 0;
+      flex-wrap:wrap;
+    }
+    .filter-btn{
+      background:#fff;
+      border:1px solid #eee;
+      padding:10px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow:0 4px 12px rgba(0,0,0,0.06);
+      transition:transform .15s, background .15s;
+    }
+    .filter-btn:hover{transform:translateY(-3px)}
+    .filter-btn.active{background:#ff8c42;color:#fff;border-color:#ff8c42}
+
+    /* CARROUSEL */
+    .carousel-wrap{position:relative;overflow:hidden;border-radius:12px;margin:18px 0}
+    .carousel-track{display:flex;transition:transform 600ms ease;will-change:transform}
+    .slide{min-width:100%;user-select:none}
+    .slide img{width:100%;height:420px;object-fit:cover;display:block}
+
+    /* controls */
+    .controls{position:absolute;top:50%;left:12px;right:12px;display:flex;justify-content:space-between;transform:translateY(-50%);pointer-events:none}
+    .arrow{pointer-events:auto;background:rgba(0,0,0,.45);color:#fff;border:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:8px}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.6);cursor:pointer}
+    .dot.active{background:#ffb84c}
+
+    /* CHOIX RAPIDE */
+    .choices{display:flex;gap:12px;justify-content:center;margin-top:14px}
+    .choice-btn{background:#ff8c42;color:#fff;border:none;padding:12px 20px;border-radius:10px;cursor:pointer;font-weight:700}
+
+    footer{background:#222;color:#ddd;padding:20px;text-align:center;margin-top:28px}
+    footer a{color:#ffb84c;margin:0 8px}
+
+    @media (max-width:720px){
+      .slide img{height:260px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- EN-TÊTE 1 -->
+  <div class="top-header">🐾 ADOPTE UN AMI</div>
+
+  <!-- EN-TÊTE 2 -->
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="avis.html">Avis</a>
+   <a href="mailto:contact@adopt.fr?subject=Demande%20d'information">Contact</a>
+    <a href="#">À propos</a>
+  </nav>
+
+  <div class="container">
+    <!-- SECTION EXPLICATION -->
+    <div class="info">
+      <h2>Pourquoi adopter ?</h2>
+      <p>
+        Adopter, c'est offrir une seconde chance. Nos refuges partenaires prennent soin des animaux en attente d'un foyer.
+        Choisis une catégorie ci-dessous pour découvrir des profils adaptés à ton mode de vie.
+      </p>
+
+      <!-- barre de filtre -->
+      <div class="filter-bar" id="filterBar" aria-label="Filtre animaux">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="chien">Chiens</button>
+        <button class="filter-btn" data-filter="chat">Chats</button>
+        <button class="filter-btn" data-filter="autre">Autres</button>
+      </div>
+
+      <!-- boutons choix rapide -->
+      <div class="choices">
+        <button class="choice-btn" onclick="choose('chien')">Voir les chiens</button>
+        <button class="choice-btn" onclick="choose('chat')">Voir les chats</button>
+        <button class="choice-btn" onclick="choose('autre')">Voir les autres</button>
+      </div>
+    </div>
+
+    <!-- CARROUSEL -->
+    <div class="carousel-wrap" id="carousel">
+      <div class="carousel-track" id="track">
+        <!-- slides ajoutées dynamiquement -->
+      </div>
+
+      <div class="controls">
+        <button class="arrow" id="prev" aria-label="Précédent">‹</button>
+        <button class="arrow" id="next" aria-label="Suivant">›</button>
+      </div>
+
+      <div class="dots" id="dots"></div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="#">Mentions légales</a> | <a href="#">Confidentialité</a> | <a href="#">Contact</a>
+    <p style="margin-top:8px">© 2025 Adopte un Ami - Projet</p>
+  </footer>
+
+<script>
+  // Données images avec type
+  const allSlides = [
+    { src: "images/luna.jpg", alt: "Luna", type: "chat" },
+    { src: "images/rex.jpg", alt: "Rex", type: "chien" },
+    { src: "images/titi.jpg", alt: "Titi", type: "autre" },
+    { src: "images/toudou.jpg", alt: "Toudou", type: "chien" },
+    { src: "images/t-pex.jpg", alt: "T-pex", type: "chien" }
+  ];
+
+  const track = document.getElementById('track');
+  const dotsWrap = document.getElementById('dots');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const carousel = document.getElementById('carousel');
+  const filterBar = document.getElementById('filterBar');
+
+  let slides = [];           // slides actuellement affichées (après filtre)
+  let current = 0;
+  let intervalId = null;
+  const AUTO_MS = 3500;
+
+  // Placeholder SVG data URI si image manquante
+  const placeholder = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+    `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='420'>
+      <rect width='100%' height='100%' fill='#ddd'/>
+      <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#888' font-size='20'>Image non trouvée</text>
+    </svg>`);
+
+  // Rendu des slides selon 'slides' array
+  function renderSlides() {
+    track.innerHTML = '';
+    dotsWrap.innerHTML = '';
+    slides.forEach((s, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      const img = document.createElement('img');
+      img.src = s.src;
+      img.alt = s.alt || `slide-${i}`;
+      img.onerror = () => img.src = placeholder;
+      slide.appendChild(img);
+      track.appendChild(slide);
+
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      dot.dataset.index = i;
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    // reset index si hors limites
+    if (current >= slides.length) current = 0;
+    updatePosition();
+  }
+
+  // Mettre à jour la position du track
+  function updatePosition() {
+    const width = carousel.clientWidth;
+    track.style.transform = `translateX(-${current * width}px)`;
+    updateDots();
+  }
+
+  function updateDots() {
+    const dots = dotsWrap.querySelectorAll('.dot');
+    dots.forEach(d => d.classList.remove('active'));
+    if (dots[current]) dots[current].classList.add('active');
+  }
+
+  // navigation
+  function goTo(i) {
+    if (slides.length === 0) return;
+    current = (i + slides.length) % slides.length;
+    updatePosition();
+    restartAuto();
+  }
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  // autoplay
+  function startAuto() { stopAuto(); intervalId = setInterval(next, AUTO_MS); }
+  function stopAuto() { if (intervalId) { clearInterval(intervalId); intervalId = null; } }
+  function restartAuto() { stopAuto(); startAuto(); }
+
+  // filtre
+  function applyFilter(filter) {
+    if (filter === 'all') slides = [...allSlides];
+    else slides = allSlides.filter(s => s.type === filter);
+    current = 0;
+    renderSlides();
+    restartAuto();
+  }
+
+  // initialisation de la barre de filtre (gestion visuelle)
+  filterBar.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    // retirer active
+    filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    applyFilter(filter);
+  });
+
+  // pause au survol
+  carousel.addEventListener('mouseenter', stopAuto);
+  carousel.addEventListener('mouseleave', startAuto);
+
+  // flèches
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // adaptation resize
+  window.addEventListener('resize', () => {
+    // small timeout pour laisser layout se recalculer
+    setTimeout(updatePosition, 60);
+  });
+
+  // fonction choix rapide (redirection)
+  function choose(type) {
+    localStorage.setItem("animalPreference", type);
+    window.location.href = "animaux.html";
+  }
+  // expose choose globalement (utile si onclick inline)
+  window.choose = choose;
+
+  // initial setup
+  applyFilter('all');
+  startAuto();
+</script>
+
+</body>
+</html>
+
