@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déposer un avis</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .stars {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            font-size: 45px;
+            cursor: pointer;
+            color: #bfbfbf;
+            transition: 0.2s;
+        }
+
+        .star.selected {
+            color: gold;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        button:hover {
+            background-color: #005FCC;
+        }
+
+        .review {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .review-stars {
+            font-size: 22px;
+            color: gold;
+        }
+
+        .review-date {
+            color: gray;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Laisser un avis</h1>
+
+    <!-- Étoiles -->
+    <div class="stars">
+        <span class="star" onclick="selectStar(1)">★</span>
+        <span class="star" onclick="selectStar(2)">★</span>
+        <span class="star" onclick="selectStar(3)">★</span>
+        <span class="star" onclick="selectStar(4)">★</span>
+        <span class="star" onclick="selectStar(5)">★</span>
+    </div>
+
+    <!-- Champ texte -->
+    <textarea id="reviewText" placeholder="Votre avis ici..."></textarea>
+
+    <!-- Bouton -->
+    <button onclick="sendReview()">Envoyer mon avis</button>
+
+
+    <!-- Firebase (CDN v8 compatible) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        // 🔥 Config Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCFZaUc2B8G1wSO4WGk4OfgMocYZsfWWEU",
+            authDomain: "avis-d54ab.firebaseapp.com",
+            projectId: "avis-d54ab",
+            storageBucket: "avis-d54ab.firebasestorage.app",
+            messagingSenderId: "838589707270",
+            appId: "1:838589707270:web:79f4e1a7a311e9a5b47f87",
+            measurementId: "G-4YXGGM5K3X"
+        };
+
+        // Initialisation Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // ⭐ Gestion des étoiles
+        let selectedRating = 0;
+
+        function selectStar(star) {
+            selectedRating = star;
+
+            const stars = document.querySelectorAll(".star");
+            stars.forEach((s, i) => {
+                s.classList.toggle("selected", i < star);
+            });
+        }
+
+        // 📩 Envoyer dans Firestore
+        async function sendReview() {
+            const text = document.getElementById("reviewText").value;
+
+            if (selectedRating === 0) {
+                alert("Veuillez choisir une note.");
+                return;
+            }
+
+            if (text.trim() === "") {
+                alert("Veuillez écrire un avis.");
+                return;
+            }
+
+            try {
+                await db.collection("avis").add({
+                    note: selectedRating,
+                    message: text,
+                    date: new Date()
+                });
+
+                alert("Votre avis a été envoyé !");
+                document.getElementById("reviewText").value = "";
+                selectStar(0);
+
+                loadReviews(); // recharge automatiquement
+
+            } catch (error) {
+                console.error("Erreur Firestore :", error);
+                alert("Erreur lors de l'envoi de l'avis.");
+            }
+        }
+
+        // 🔄 Charger et afficher les avis
+        async function loadReviews() {
+            const reviewsList = document.getElementById("reviewsList");
+            reviewsList.innerHTML = "";
+
+            const snapshot = await db.collection("avis")
+                                    .orderBy("date", "desc")
+                                    .get();
+
+            let totalNotes = 0;
+            let count = 0;
+
+            snapshot.forEach(doc => {
+                const data = doc.data();
+
+                totalNotes += data.note;
+                count++;
+
+                let stars = "";
+                for (let i = 0; i < data.note; i++) stars += "★";
+                for (let i = data.note; i < 5; i++) stars += "☆";
+
+                reviewsList.innerHTML += `
+                    <div class="review">
+                        <div class="review-stars">${stars}</div>
+                        <p>${data.message}</p>
+                        <div class="review-date">
+                            ${data.date.toDate().toLocaleString()}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // 📊 Calcul moyenne
+            if (count > 0) {
+                const avg = (totalNotes / count).toFixed(2);
+                document.getElementById("averageRating").innerHTML =
+                    `<strong>Note moyenne :</strong> ⭐ ${avg} / 5 (${count} avis)`;
+            } else {
+                document.getElementById("averageRating").innerHTML =
+                    "Aucun avis pour le moment";
+            }
+        }
+    </script>
+
+    <h2>Les avis</h2>
+
+    <div id="averageRating" style="font-size:20px; margin-bottom:10px;">
+        Calcul de la note...
+    </div>
+
+    <div id="reviewsList"></div>
+
+    <script>
+        // Charger les avis dès l’ouverture
+        loadReviews();
+    </script>
+
+</body>
+</html>
