@@ -1,0 +1,16 @@
+Launch VS Code
+Ctrl+K + Ctrl+O pou ouvrir un dossier, rechercher le dossier "FindUrPuppy" (cette typo exacte)
+
+git status => voir où t'en es, sur quelle branche tu te trouves et quelle modif tu as fait
+
+git branch => voir toutes les branch existantes
+
+git switch <nom de branche> => se déplacer entre les branches
+
+git add * => ajouter toutes les modifs faites sur le next commit
+
+git commit -m "texte expliquant la modif" => initier le push des new modifs
+
+git push origin <nom de branche> => envoie les données locales sur gitHub
+
+git pull origin <nom de branche> => récupère les données du cloud vers le local
