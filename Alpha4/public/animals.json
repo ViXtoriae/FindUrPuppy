@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Rex",
+    "desc": "Berger allemand très affectueux et protecteur",
+    "img": "rex.jpg",
+    "type": "chien",
+    "age": "5",
+    "sex": "male",
+    "size": "grand",
+    "refuge": "Refuge de l'Espoir"
+  },
+  {
+    "name": "Mia",
+    "desc": "Chaton tigré joueuse et curieuse",
+    "img": "mia.jpg",
+    "type": "chat",
+    "age": "2",
+    "sex": "femelle",
+    "size": "petit",
+    "refuge": "Chats Sans Toit"
+  },
+  {
+    "name": "Oscar",
+    "desc": "Beagle énergique qui adore les balades",
+    "img": "toudou.jpg",
+    "type": "chien",
+    "age": "3",
+    "sex": "male",
+    "size": "moyen",
+    "refuge": "Les Amis des Chiens"
+  },
+  {
+    "name": "Bella",
+    "desc": "Chat noire douce et calme, parfaite pour un foyer tranquille",
+    "img": "bella.jpg",
+    "type": "chat",
+    "age": "4",
+    "sex": "femelle",
+    "size": "petit",
+    "refuge": "Chats Sans Toit"
+  },
+  {
+    "name": "Luna",
+    "desc": "Jeune husky pleine d'énergie et très joueuse",
+    "img": "luna.jpg",
+    "type": "chien",
+    "age": "1",
+    "sex": "femelle",
+    "size": "moyen",
+    "refuge": "Refuge Arc-en-Ciel"
+  },
+  {
+    "name": "Max",
+    "desc": "Golden retriever sociable et affectueux",
+    "img": "max.jpg",
+    "type": "chien",
+    "age": "7",
+    "sex": "male",
+    "size": "grand",
+    "refuge": "Refuge de l'Espoir"
+  }
+]

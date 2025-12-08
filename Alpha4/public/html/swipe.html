@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Swipe - AdoptMe</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body class="swipe-mode">
+    <div class="top-nav">
+        <a href="index.html" class="btn-back"><i class="ri-arrow-left-line"></i> Accueil</a>
+    </div>
+
+    <div class="swipe-container" id="cardContainer">
+        <div class="card" style="z-index: 1; transform: scale(0.9) translateY(20px);">
+            <img src="../assets/luna.jpg" class="card-img" alt="Chat">
+            <div class="card-content">
+                <h3>Misty, 4 ans</h3>
+                <p>Calme, aime dormir au soleil.</p>
+            </div>
+        </div>
+        <div class="card" style="z-index: 2; transform: scale(0.95) translateY(10px);">
+            <img src="../assets/Gemal.jpg" class="card-img" alt="Chien">
+            <div class="card-content">
+                <h3>Rocky, 1 an</h3>
+                <p>Très sportif, cherche jardin.</p>
+            </div>
+        </div>
+        <div class="card active-card" style="z-index: 3;">
+            <img src="../assets/toudou.jpg" class="card-img" alt="Chien">
+            <div class="card-content">
+                <h3>Luna, 2 ans</h3>
+                <p>Douce et affectueuse. Ok chats.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons-container">
+        <button class="action-btn btn-nope" onclick="swipe('left')">
+            <i class="ri-close-line"></i>
+        </button>
+        <button class="action-btn btn-like" onclick="swipe('right')">
+            <i class="ri-heart-fill"></i>
+        </button>
+    </div>
+
+    <script>
+        // Logique simple pour l'effet de Swipe
+        function swipe(direction) {
+            const container = document.getElementById('cardContainer');
+            const cards = container.querySelectorAll('.card');
+            
+            // On prend la dernière carte visuelle (celle du dessus avec z-index le plus haut)
+            // Dans notre HTML, c'est la dernière div .card
+            const activeCard = cards[cards.length - 1];
+
+            if (!activeCard) return;
+
+            // 1. Appliquer l'animation
+            if (direction === 'left') {
+                activeCard.classList.add('swipe-left');
+            } else {
+                activeCard.classList.add('swipe-right');
+            }
+
+            // 2. Après l'animation (500ms), on supprime la carte du DOM
+            setTimeout(() => {
+                activeCard.remove();
+                reorganizeCards();
+            }, 500);
+        }
+
+        // Fonction pour remonter les cartes du dessous
+        function reorganizeCards() {
+            const cards = document.querySelectorAll('.card');
+            if(cards.length === 0) {
+                document.querySelector('.swipe-container').innerHTML = "<h2 style='text-align:center; margin-top:50%; color:#3f3b57'>Plus d'animaux !<br>Revenez demain.</h2>";
+                return;
+            }
+            
+            // La nouvelle carte du dessus (la dernière de la liste restante)
+            const newActive = cards[cards.length - 1];
+            newActive.style.transition = "transform 0.5s ease";
+            newActive.style.transform = "scale(1) translateY(0)";
+            newActive.style.zIndex = "3";
+
+            // Celle d'encore en dessous
+            if(cards.length > 1) {
+                const next = cards[cards.length - 2];
+                next.style.transform = "scale(0.95) translateY(10px)";
+                next.style.zIndex = "2";
+            }
+        }
+    </script>
+</body>
+</html>
