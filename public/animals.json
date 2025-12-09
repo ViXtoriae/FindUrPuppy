@@ -1,62 +1,152 @@
 [
   {
-    "name": "Rex",
-    "desc": "Berger allemand très affectueux et protecteur",
-    "img": "rex.jpg",
+    "name": "Luna",
     "type": "chien",
-    "age": "5",
-    "sex": "male",
-    "size": "grand",
+    "age": 2,
+    "sex": "femelle",
+    "size": "moyen",
+    "description": "Luna est une chienne croisée Border Collie pleine d'énergie. Elle adore courir et apprendre de nouveaux tours.",
+    "image": "dog1.jpg",
     "refuge": "Refuge de l'Espoir"
   },
   {
-    "name": "Mia",
-    "desc": "Chaton tigré joueuse et curieuse",
-    "img": "mia.jpg",
+    "name": "Simba",
     "type": "chat",
-    "age": "2",
-    "sex": "femelle",
-    "size": "petit",
-    "refuge": "Chats Sans Toit"
-  },
-  {
-    "name": "Oscar",
-    "desc": "Beagle énergique qui adore les balades",
-    "img": "toudou.jpg",
-    "type": "chien",
-    "age": "3",
+    "age": 5,
     "sex": "male",
-    "size": "moyen",
-    "refuge": "Les Amis des Chiens"
+    "size": "petit",
+    "description": "Simba est un magnifique chat roux, calme et très câlin. C'est le roi du canapé qui cherche des genoux pour la sieste.",
+    "image": "cat1.jpg",
+    "refuge": "Refuge de l'Espoir"
   },
   {
-    "name": "Bella",
-    "desc": "Chat noire douce et calme, parfaite pour un foyer tranquille",
-    "img": "bella.jpg",
+    "name": "Rocky",
+    "type": "chien",
+    "age": 6,
+    "sex": "male",
+    "size": "grand",
+    "dedescription": "Rocky est un Berger Allemand loyal et protecteur. Il a besoin d'un maître expérimenté pour parfaire son éducation.",
+    "image": "dog2.jpg",
+    "refuge": "Refuge de l'Espoir"
+  },
+  {
+    "name": "Nala",
     "type": "chat",
-    "age": "4",
+    "age": 1,
     "sex": "femelle",
     "size": "petit",
-    "refuge": "Chats Sans Toit"
-  },
-  {
-    "name": "Luna",
-    "desc": "Jeune husky pleine d'énergie et très joueuse",
-    "img": "luna.jpg",
-    "type": "chien",
-    "age": "1",
-    "sex": "femelle",
-    "size": "moyen",
-    "refuge": "Refuge Arc-en-Ciel"
+    "description": "Petite chatte curieuse et joueuse. Nala adore chasser les plumeaux et grimper sur son arbre à chat.",
+    "image": "cat2.jpg",
+    "refuge": "Refuge de l'Espoir"
   },
   {
     "name": "Max",
-    "desc": "Golden retriever sociable et affectueux",
-    "img": "max.jpg",
     "type": "chien",
-    "age": "7",
+    "age": 12,
+    "sex": "male",
+    "size": "petit",
+    "description": "Max est un petit Jack Russell sénior qui cherche une retraite paisible. Juste de petites balades et beaucoup d'amour.",
+    "image": "dog3.jpg",
+    "refuge": "Refuge de l'Espoir"
+  },
+  {
+    "name": "Bella",
+    "type": "chien",
+    "age": 4,
+    "sex": "femelle",
+    "size": "moyen",
+    "description": "Bella est une chienne très douce, un peu timide au premier abord. Elle a besoin de douceur et de patience.",
+    "image": "dog4.jpg",
+    "refuge": "SPA Paris"
+  },
+  {
+    "name": "Oreo",
+    "type": "chat",
+    "age": 1,
+    "sex": "male",
+    "size": "petit",
+    "description": "Chat noir et blanc très rigolo. Oreo est un vrai clown qui vous fera rire toute la journée. Très sociable.",
+    "image": "cat3.jpg",
+    "refuge": "SPA Paris"
+  },
+  {
+    "name": "Thor",
+    "type": "chien",
+    "age": 2,
     "sex": "male",
     "size": "grand",
-    "refuge": "Refuge de l'Espoir"
+    "description": "Magnifique Husky aux yeux bleus. Thor est très bavard et a besoin de beaucoup d'exercice physique.",
+    "image": "dog5.jpg",
+    "refuge": "SPA Paris"
+  },
+  {
+    "name": "Misty",
+    "type": "chat",
+    "age": 13,
+    "sex": "femelle",
+    "size": "petit",
+    "description": "Misty est une dame élégante et indépendante. Elle apprécie sa tranquillité. Idéale pour personne seule.",
+    "image": "cat4.jpg",
+    "refuge": "SPA Paris"
+  },
+  {
+    "name": "Charlie",
+    "type": "chien",
+    "age": 5,
+    "sex": "male",
+    "size": "petit",
+    "description": "Charlie est un cocker joyeux et gourmand. Il adore renifler partout lors des promenades.",
+    "image": "dog6.jpg",
+    "refuge": "SPA Paris"
+  },
+  {
+    "name": "Daisy",
+    "type": "chien",
+    "age": 11,
+    "sex": "femelle",
+    "size": "grand",
+    "description": "Une Golden Retriever au cœur d'or. Malgré son âge, Daisy garde une âme de chiot. Elle aime tout le monde.",
+    "image": "dog7.jpg",
+    "refuge": "Animaux Secours"
+  },
+  {
+    "name": "Loki",
+    "type": "chat",
+    "age": 1,
+    "sex": "male",
+    "size": "petit",
+    "description": "Loki porte bien son nom, c'est un petit diablotin adorable. Il a besoin de beaucoup de jeux pour ne pas s'ennuyer.",
+    "image": "cat5.jpg",
+    "refuge": "Animaux Secours"
+  },
+  {
+    "name": "Rex",
+    "type": "chien",
+    "age": 5,
+    "sex": "male",
+    "size": "moyen",
+    "description": "Rex est un bâtard au look atypique et au grand cœur. Un chien de maison exemplaire, propre et sage.",
+    "image": "dog8.jpg",
+    "refuge": "Animaux Secours"
+  },
+  {
+    "name": "Coco",
+    "type": "chat",
+    "age": 8,
+    "sex": "femelle",
+    "size": "petit",
+    "description": "Coco est une chatte écaille de tortue très bavarde. Elle vous racontera sa journée dès que vous rentrerez.",
+    "image": "cat6.jpg",
+    "refuge": "Animaux Secours"
+  },
+  {
+    "name": "Lucky",
+    "type": "chien",
+    "age": 3,
+    "sex": "male",
+    "size": "moyen",
+    "description": "Lucky est un chien rescapé qui a peur des gestes brusques mais qui donne un amour infini une fois rassuré.",
+    "image": "dog9.jpg",
+    "refuge": "Animaux Secours"
   }
 ]

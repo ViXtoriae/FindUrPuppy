@@ -39,4 +39,6 @@ await db.exec(`
   )
 `);
 
+
+
 console.log("Tables SQLite créées ✅");

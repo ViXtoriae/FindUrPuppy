@@ -1,4 +1,6 @@
+// importAnimals.js
 import fs from "fs";
+import path from "path";
 import mysql from "mysql2/promise";
 
 async function importAnimals() {
@@ -13,8 +15,10 @@ async function importAnimals() {
     });
     console.log("Connexion MySQL établie ✅");
 
-    // Lire le fichier JSON
-    const data = JSON.parse(fs.readFileSync("animals.json", "utf-8"));
+    // Lire le fichier JSON (chemin robuste)
+    const data = JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), "public", "animals.json"), "utf-8")
+    );
 
     // Insérer chaque animal
     for (const animal of data) {
@@ -30,9 +34,9 @@ async function importAnimals() {
           animal.age,
           animal.sex,
           animal.size,
-          animal.desc,
-          animal.img,
-          animal.refuge
+          animal.description, // ✅ clé corrigée
+          animal.image,         // ✅ clé corrigée
+          animal.refuge_id
         ]
       );
       console.log(`✔ Animal inséré : ${animal.name}`);

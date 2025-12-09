@@ -4,7 +4,6 @@ import mysql from "mysql2/promise";
 async function initAll() {
   let connection;
   try {
-    // Connexion à MySQL
     connection = await mysql.createConnection({
       host: "localhost",
       user: "root",
@@ -12,11 +11,10 @@ async function initAll() {
     });
     console.log("Connexion MySQL établie");
 
-    // 1. Créer la base si elle n'existe pas
     await connection.query("CREATE DATABASE IF NOT EXISTS adoptme");
     await connection.query("USE adoptme");
 
-    // 2. Table users
+    // Table users
     await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -27,7 +25,7 @@ async function initAll() {
       )
     `);
 
-    // 3. Table refuges
+    // Table refuges
     await connection.query(`
       CREATE TABLE IF NOT EXISTS refuges (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,7 +37,7 @@ async function initAll() {
       )
     `);
 
-    // 4. Table animals
+    // Table animals
     await connection.query(`
       CREATE TABLE IF NOT EXISTS animals (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -56,18 +54,23 @@ async function initAll() {
       )
     `);
 
-    // 5. Insérer un utilisateur admin si absent
+    // Admin par défaut
     const [rows] = await connection.query("SELECT * FROM users WHERE username=?", ["admin"]);
     if (rows.length === 0) {
       await connection.query("INSERT INTO users (username, password, email) VALUES (?,?,?)", ["admin", "1234", "admin@adoptme.fr"]);
       console.log("Utilisateur admin créé (login: admin / mdp: 1234)");
     }
 
-    // 6. Exemple de refuge si absent
+    // Refuges par défaut
     const [refRows] = await connection.query("SELECT * FROM refuges");
     if (refRows.length === 0) {
-      await connection.query("INSERT INTO refuges (name, city, address, phone) VALUES (?,?,?,?)", ["Refuge de l'Espoir", "Paris", "12 rue des Animaux", "0102030405"]);
-      console.log("Refuge de test ajouté");
+      await connection.query(`
+        INSERT INTO refuges (name, city, address, phone) VALUES
+        ('Refuge de l''Espoir', 'Paris', '12 rue des Animaux', '0102030405'),
+        ('SPA Paris', 'Paris', '39 Boulevard Saint-Michel', '01 40000202'),
+        ('Animaux Secours', 'Marseille', '5 Avenue de la Liberté', '0491000303')
+      `);
+      console.log("Refuges ajoutés");
     }
 
     console.log("Initialisation terminée ✅");
@@ -79,4 +82,3 @@ async function initAll() {
 }
 
 await initAll();
-
