@@ -1,0 +1,54 @@
+{
+  "name": "Luna",
+  "desc": "Chatte douce et joueuse, 2 ans",
+  "img": "images/luna.jpg",
+  "type": "chat",
+  "age": "jeune",
+  "sex": "femelle",
+  "size": "petit"
+}
+{
+  "name": "Toudou",
+  "desc": "Chien affectueux, 4 ans",
+  "img": "images/toudou.jpg",
+  "type": "chien",
+  "age": "adulte",
+  "sex": "male",
+  "size": "moyen"
+}
+{
+  "name": "Rex",
+  "desc": "Chien loyal et protecteur, 5 ans",
+  "img": "images/rex.jpg",
+  "type": "chien",
+  "age": "adulte",
+  "sex": "male",
+  "size": "grand"
+}
+{
+  "name": "Titi",
+  "desc": "Petit oiseau curieux et bavard",
+  "img": "images/titi.jpg",
+  "type": "autre",
+  "age": "jeune",
+  "sex": "male",
+  "size": "petit"
+}
+{
+  "name": "Coussin",
+  "desc": "Chien joueur et affectueux, 3 ans",
+  "img": "images/coussin.jpg",
+  "type": "chien",
+  "age": "adulte",
+  "sex": "male",
+  "size": "moyen"
+}
+{
+  "name": "Ariana Grande",
+  "desc": "Chienne énergique et câline, 2 ans",
+  "img": "images/gemal.jpg",
+  "type": "chien",
+  "age": "jeune",
+  "sex": "femelle",
+  "size": "moyen"
+}

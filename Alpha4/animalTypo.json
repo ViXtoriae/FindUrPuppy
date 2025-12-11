@@ -1,0 +1,11 @@
+{
+  "animal": {
+    "name": "string",
+    "desc": "string",
+    "img": "string",
+    "type": "string",
+    "age": "string",
+    "sex": "string",
+    "size": "string"
+  }
+}
