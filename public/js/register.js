@@ -1,51 +1,32 @@
 document.getElementById("register-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const email = document.getElementById("reg-email").value.trim();
-    const password = document.getElementById("reg-password").value.trim();
-    const msg = document.getElementById("register-message");
+  const email = document.getElementById("reg-email").value.trim();
+  const password = document.getElementById("reg-password").value.trim();
+  const message = document.getElementById("register-message");
 
-    msg.style.display = "none";
+  let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // --- VALIDATIONS SIMPLES ---
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) return showError("Email invalide.");
+  // Vérifie si l'email existe déjà
+  const exists = users.some(u => u.email === email);
 
-    if (password.length < 8) return showError("Min. 8 caractères.");
-    if (!/[A-Z]/.test(password)) return showError("1 majuscule requise.");
-    if (!/[0-9]/.test(password)) return showError("1 chiffre requis.");
+  if (exists) {
+    message.textContent = "Cet email est déjà utilisé";
+    message.className = "error-msg";
+    message.style.display = "block";
+    return;
+  }
 
-    // --- ENVOI AU BACKEND ---
-    fetch("http://localhost:3000/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (!data.success) return showError(data.message);
+  // Création du compte
+  users.push({ email, password });
+  localStorage.setItem("users", JSON.stringify(users));
 
-        // Affiche le message de succès
-        msg.textContent = data.message;
-        msg.style.color = "green";
-        msg.style.display = "block";
+  message.textContent = "Compte créé avec succès 🎉";
+  message.className = "success-msg";
+  message.style.display = "block";
 
-        // --- Redirection automatique après 2 secondes ---
-        setTimeout(() => {
-            window.location.href = "login.html";
-        }, 2000);
-    })
-    .catch(err => showError("Erreur réseau : " + err.message));
+  // Redirection automatique vers login
+  setTimeout(() => {
+    window.location.href = "login.html";
+  }, 1500);
 });
-
-// --- Fonction pour afficher une erreur ---
-function showError(text) {
-    const msg = document.getElementById("register-message");
-    msg.textContent = text;
-    msg.style.display = "block";
-    msg.style.color = "red";
-
-    const card = document.querySelector(".auth-card");
-    card.classList.add("shake");
-    setTimeout(() => card.classList.remove("shake"), 300);
-}
