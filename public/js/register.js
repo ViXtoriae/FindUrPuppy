@@ -1,5 +1,3 @@
-/*
-
 document.getElementById("register-form").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -10,7 +8,6 @@ document.getElementById("register-form").addEventListener("submit", function(e) 
     msg.style.display = "none";
 
     // --- VALIDATIONS SIMPLES ---
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) return showError("Email invalide.");
 
@@ -19,7 +16,6 @@ document.getElementById("register-form").addEventListener("submit", function(e) 
     if (!/[0-9]/.test(password)) return showError("1 chiffre requis.");
 
     // --- ENVOI AU BACKEND ---
-
     fetch("http://localhost:3000/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -29,13 +25,20 @@ document.getElementById("register-form").addEventListener("submit", function(e) 
     .then(data => {
         if (!data.success) return showError(data.message);
 
+        // Affiche le message de succès
         msg.textContent = data.message;
         msg.style.color = "green";
         msg.style.display = "block";
-    });
+
+        // --- Redirection automatique après 2 secondes ---
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 2000);
+    })
+    .catch(err => showError("Erreur réseau : " + err.message));
 });
 
-// Animation erreur
+// --- Fonction pour afficher une erreur ---
 function showError(text) {
     const msg = document.getElementById("register-message");
     msg.textContent = text;
@@ -46,24 +49,3 @@ function showError(text) {
     card.classList.add("shake");
     setTimeout(() => card.classList.remove("shake"), 300);
 }
-
-*/
-
-/ server.js
-const express = require("express");
-const app = express();
-app.use(express.json());
-
-app.post("/register", (req, res) => {
-  const { email, password } = req.body;
-
-  // Exemple de logique basique
-  if (!email || !password) {
-    return res.json({ success: false, message: "Champs manquants." });
-  }
-
-  // Ici tu pourrais enregistrer en BDD
-  return res.json({ success: true, message: "Compte créé avec succès 🎉" });
-});
-
-app.listen(3000, () => console.log("Serveur lancé sur http://localhost:3000"));
