@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="../styles.css" />
+<title>AdopteUnAmi</title>
+<meta name="description" content="Adoptez un compagnon facilement grâce à AdopteUnAmi. Découvrez chiens et chats disponibles dans les refuges en France.">
+</head>
+<body>
+
+<!--Navbar-->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="nav-logo"><a href="#home">AdopteUnAmi</a></div>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-right" id="navMenu">
+    <a href="animal.html">Animaux</a>
+    <a href="#refuges">Refuges</a>
+    <a href="swipe.html">Swipe</a>
+    <a href="avis.html">Avis</a>
+    <a href="login.html" style="background:var(--secondary-color); color:white;">Login</a>
+  </div>
+</nav>
+
+<!--Header-->
+<header id="home">
+    <div class="header__container">
+        <div class="header__image">
+            <img src="../assets/header.png" alt="Chien heureux" />
+        </div>
+        <div class="header__content">
+            <h4>Bienvenue</h4>
+            <h1>Adopte<br /><span>Un Ami</span></h1>
+            <h2>Votre compagnon vous attend 🐾</h2>
+            <p>Découvrez tous les animaux disponibles à l’adoption dans plusieurs refuges en France sur une seule interface.</p>
+            <div class="header__btn">
+                <button onclick="window.location.href='swipe.html'">
+                Commencer <span><i class="ri-arrow-right-line"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__bottom"></div>
+</header>
+
+<!--Recherche-->
+<section id="search" class="section__container">
+    <h2 class="section__header">Trouvez votre compagnon</h2>
+    <div class="filter-card">
+        <div class="filter-grid">
+            <input type="text" id="filter-text" placeholder="Recherche rapide..." />
+            
+            <select id="filter-type">
+                <option value="">Type</option>
+                <option value="chien">Chien</option>
+                <option value="chat">Chat</option>
+            </select>
+            <select id="filter-sex">
+                <option value="">Sexe</option>
+                <option value="male">Mâle</option>
+                <option value="femelle">Femelle</option>
+            </select>
+            <select id="filter-size">
+                <option value="">Taille</option>
+                <option value="petit">Petit</option>
+                <option value="moyen">Moyen</option>
+            </select>
+            
+            <button id="filter-btn">Rechercher</button>
+        </div>
+    </div>
+</section>
+
+<!--Refuges-->
+<section id="refuges" class="section__container">
+    <h2 class="section__header">Nos Refuges</h2>
+    <div class="carousel">
+        <div class="arrowbtn arrowbtn-left"></div>
+        <div class="arrowbtn arrowbtn-right"></div>
+        
+        <div class="carousel__track">
+            <div class="carousel__card">
+                <img src="../assets/refuge-1.jpg" alt="Refuge">
+                <h4>Refuge de l'Espoir</h4>
+                <a href="#">Voir</a>
+            </div>
+            <div class="carousel__card">
+                <img src="../assets/refuge-2.jpg" alt="Refuge">
+                <h4>SPA Paris</h4>
+                <a href="#">Voir</a>
+            </div>
+            <div class="carousel__card">
+                <img src="../assets/refuge-3.jpg" alt="Refuge">
+                <h4>Animaux Secours</h4>
+                <a href="#">Voir</a>
+            </div>
+            <div class="carousel__card">
+                <img src="../assets/refuge-4.jpg" alt="Refuge">
+                <h4>Coeur de chien</h4>
+                <a href="#">Voir</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Swipe-->
+<section id="swipe" class="section__container">
+    <h2 class="section__header">Matchmaking ❤️</h2>
+    <div class="app">
+        <div class="card" id="swipeCard">
+            <div style="font-size:4rem;">🐶</div>
+            <h3>Max, 2 ans</h3>
+            <p>Je suis joueur et j'aime les balles !</p>
+        </div>
+        <div class="buttons">
+            <button id="nope"><i class="ri-close-line"></i></button>
+            <button id="like"><i class="ri-heart-fill"></i></button>
+        </div>
+    </div>
+</section>
+
+<!--Footer avec lien vers page contact-->
+<footer>
+    <p>© 2025 AdopteUnAmi - Design by Poppins</p>
+    <a href="contact.html">Contact & Mentions légales</a>
+</footer>
+
+<!--Scripts-->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script src="main.js"></script>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        menu.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
