@@ -1,148 +1,278 @@
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<link rel="stylesheet" href="../styles.css" />
-<title>AdopteUnAmi</title>
-<meta name="description" content="Adoptez un compagnon facilement grâce à AdopteUnAmi. Découvrez chiens et chats disponibles dans les refuges en France.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- RemixIcon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+  <title>Contact & Mentions légales - AdopteUnAmi</title>
+
+  <style>
+    /* ==============================
+       GLOBAL
+    ============================== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e3a8a, #9333ea);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    nav.navbar {
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .nav-logo a {
+      color: #facc15;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    /* ==============================
+       ILLUSTRATION
+    ============================== */
+    .background-illustration {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 35%;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .background-illustration img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ==============================
+       FORMULAIRE
+    ============================== */
+    .section__container {
+      max-width: 600px;
+      margin: 120px auto;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      color: #fff;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .section__header {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      color: #facc15;
+    }
+
+    .contact-form label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      background: rgba(255,255,255,0.3);
+      box-shadow: 0 0 12px #facc15;
+      outline: none;
+    }
+
+    .contact-form button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      background: linear-gradient(135deg, #facc15, #f97316);
+      color: #1e3a8a;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(250,204,21,0.7);
+    }
+
+    /* Message de feedback */
+    .form-message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      display: none;
+    }
+    .form-message.success {
+      background: rgba(34,197,94,0.2);
+      color: #22c55e;
+      display: block;
+    }
+    .form-message.error {
+      background: rgba(239,68,68,0.2);
+      color: #ef4444;
+      display: block;
+    }
+
+    /* ==============================
+       FOOTER
+    ============================== */
+    .site-footer {
+      background: linear-gradient(135deg, #111827, #1e3a8a);
+      color: #fff;
+      padding: 3rem 1rem 2rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .footer-col h3, .footer-col h4 {
+      margin-bottom: 1rem;
+      color: #facc15;
+    }
+
+    .footer-col p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col ul li a {
+      color: white;
+      opacity: 0.85;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      opacity: 1;
+      color: #facc15;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-socials a {
+      font-size: 1.5rem;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .footer-socials a:hover {
+      color: #facc15;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 900px) {
+      .footer-container {grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 500px) {
+      .footer-container {grid-template-columns: 1fr; text-align: center;}
+      .footer-socials {justify-content: center;}
+    }
+  </style>
 </head>
 <body>
 
-<!--Navbar-->
 <nav class="navbar">
   <div class="nav-left">
-    <div class="nav-logo"><a href="#home">AdopteUnAmi</a></div>
-  </div>
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
-  <div class="nav-right" id="navMenu">
-    <a href="animal.html">Animaux</a>
-    <a href="#refuges">Refuges</a>
-    <a href="swipe.html">Swipe</a>
-    <a href="avis.html">Avis</a>
-    <a href="login.html" style="background:var(--secondary-color); color:white;">Login</a>
+    <div class="nav-logo"><a href="index.html">AdopteUnAmi</a></div>
   </div>
 </nav>
 
-<!--Header-->
-<header id="home">
-    <div class="header__container">
-        <div class="header__image">
-            <img src="../assets/header.png" alt="Chien heureux" />
-        </div>
-        <div class="header__content">
-            <h4>Bienvenue</h4>
-            <h1>Adopte<br /><span>Un Ami</span></h1>
-            <h2>Votre compagnon vous attend 🐾</h2>
-            <p>Découvrez tous les animaux disponibles à l’adoption dans plusieurs refuges en France sur une seule interface.</p>
-            <div class="header__btn">
-                <button onclick="window.location.href='swipe.html'">
-                Commencer <span><i class="ri-arrow-right-line"></i></span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="header__bottom"></div>
-</header>
+<!-- Illustration de fond -->
+<div class="background-illustration">
+  <img src="https://undraw.co/api/illustrations/undraw_contact_us_re_4qqt.svg" alt="Illustration contact" />
+</div>
 
-<!--Recherche-->
-<section id="search" class="section__container">
-    <h2 class="section__header">Trouvez votre compagnon</h2>
-    <div class="filter-card">
-        <div class="filter-grid">
-            <input type="text" id="filter-text" placeholder="Recherche rapide..." />
-            
-            <select id="filter-type">
-                <option value="">Type</option>
-                <option value="chien">Chien</option>
-                <option value="chat">Chat</option>
-            </select>
-            <select id="filter-sex">
-                <option value="">Sexe</option>
-                <option value="male">Mâle</option>
-                <option value="femelle">Femelle</option>
-            </select>
-            <select id="filter-size">
-                <option value="">Taille</option>
-                <option value="petit">Petit</option>
-                <option value="moyen">Moyen</option>
-            </select>
-            
-            <button id="filter-btn">Rechercher</button>
-        </div>
-    </div>
+<section class="section__container fade-in">
+  <h2 class="section__header">Contactez-nous</h2>
+  <form id="contact-form" class="contact-form">
+    <label for="name"><i class="ri-user-line"></i> Nom</label>
+    <input type="text" id="name" placeholder="Votre Nom" required>
+
+    <label for="email"><i class="ri-mail-line"></i> Email</label>
+    <input type="email" id="email" placeholder="Votre Email" required>
+
+    <label for="message"><i class="ri-message-line"></i> Message</label>
+    <textarea id="message" placeholder="Votre Message..." rows="5" required></textarea>
+
+    <button type="submit"><i class="ri-send-plane-line"></i> Envoyer le message</button>
+    <div id="form-message" class="form-message"></div>
+  </form>
 </section>
 
-<!--Refuges-->
-<section id="refuges" class="section__container">
-    <h2 class="section__header">Nos Refuges</h2>
-    <div class="carousel">
-        <div class="arrowbtn arrowbtn-left"></div>
-        <div class="arrowbtn arrowbtn-right"></div>
-        
-        <div class="carousel__track">
-            <div class="carousel__card">
-                <img src="../assets/refuge-1.jpg" alt="Refuge">
-                <h4>Refuge de l'Espoir</h4>
-                <a href="#">Voir</a>
-            </div>
-            <div class="carousel__card">
-                <img src="../assets/refuge-2.jpg" alt="Refuge">
-                <h4>SPA Paris</h4>
-                <a href="#">Voir</a>
-            </div>
-            <div class="carousel__card">
-                <img src="../assets/refuge-3.jpg" alt="Refuge">
-                <h4>Animaux Secours</h4>
-                <a href="#">Voir</a>
-            </div>
-            <div class="carousel__card">
-                <img src="../assets/refuge-4.jpg" alt="Refuge">
-                <h4>Coeur de chien</h4>
-                <a href="#">Voir</a>
-            </div>
-        </div>
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h3>AdopteUnAmi</h3>
+      <p>Un projet fictif pour apprendre et expérimenter le web design.</p>
     </div>
-</section>
-
-<!--Swipe-->
-<section id="swipe" class="section__container">
-    <h2 class="section__header">Matchmaking ❤️</h2>
-    <div class="app">
-        <div class="card" id="swipeCard">
-            <div style="font-size:4rem;">🐶</div>
-            <h3>Max, 2 ans</h3>
-            <p>Je suis joueur et j'aime les balles !</p>
-        </div>
-        <div class="buttons">
-            <button id="nope"><i class="ri-close-line"></i></button>
-            <button id="like"><i class="ri-heart-fill"></i></button>
-        </div>
-    </div>
-</section>
-
-<!--Footer avec lien vers page contact-->
-<footer>
-    <p>© 2025 AdopteUnAmi - Design by Poppins</p>
-    <a href="contact.html">Contact & Mentions légales</a>
-</footer>
-
-<!--Scripts-->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-<script src="main.js"></script>
-
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById('navMenu');
-        menu.classList.toggle('active');
-    }
-</script>
-
-</body>
-</html>
+    <div class="footer-col">
+      <h4>Navigation</h4
