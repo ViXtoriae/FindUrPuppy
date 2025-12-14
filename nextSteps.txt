@@ -1,0 +1,14 @@
+## Page d'accueil ##
+
+1. Menu qui reste tout le long avec :
+    - à gauche : le nom du site web qui nous permet de revenir sur la page d'accueil
+    - à droite : 
+        - 'Animaux' (avec loupe) pour aller sur la recherche centrée animaux 
+        - 'Refuges' : pour aller sur la liste des Refuges
+        - 'Swipe' : pour acceder au jeu de Swipe
+        - 'Contact' : pour contacter les devs
+        - 'Login' : pour se connecter
+    
+2. Implémenter le tinder-like sur la 2e partie de la page à la place du 
+    "Get to know us more"(après la grande image de chien)
+
