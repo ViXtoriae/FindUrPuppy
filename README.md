@@ -9,7 +9,7 @@ Objectif: Créer un site web reliant les refuges de France afin tous les regroup
 ### Init
  - Aller dans le repo 'init'
  - Lancer le init.js afin d'initialiser les tables
- - Lancer import.js d'add les values dans la BDD
+ - Lancer import.js pour add les values dans la BDD
  - Revenir dans le repo initital
  - Lancer server.js
 
