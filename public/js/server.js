@@ -1,4 +1,4 @@
-/*
+
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -45,24 +45,3 @@ app.post("/register", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Serveur API en ligne sur http://localhost:${PORT}`);
 });
-*/
-
-
-// server.js
-const express = require("express");
-const app = express();
-app.use(express.json());
-
-app.post("/register", (req, res) => {
-  const { email, password } = req.body;
-
-  // Exemple de logique basique
-  if (!email || !password) {
-    return res.json({ success: false, message: "Champs manquants." });
-  }
-
-  // Ici tu pourrais enregistrer en BDD
-  return res.json({ success: true, message: "Compte créé avec succès 🎉" });
-});
-
-app.listen(3000, () => console.log("Serveur lancé sur http://localhost:3000"));
