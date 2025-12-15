@@ -14,4 +14,4 @@ Objectif: Créer un site web reliant les refuges de France afin tous les regroup
  - Lancer server.js
 
 Aller sur la page : http://localhost:3000/html/index.html
-<\br> Enjoy ! 
+<\n> Enjoy ! 
