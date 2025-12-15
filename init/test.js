@@ -1,44 +1,35 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+// test.js
+import mysql from "mysql2/promise";
 
-const db = await open({
-  filename: './adoptme.db',
-  driver: sqlite3.Database
-});
+async function testDB() {
+  let connection;
+  try {
+    connection = await mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "adoptme"
+    });
+    console.log("Connexion MySQL établie ✅");
 
-await db.exec(`
-  CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT,
-    password TEXT
-  )
-`);
+    // test recup animaux
+    const [animals] = await connection.query("SELECT * FROM animals");
+    console.log("Animaux :", animals);
 
-await db.exec(`
-  CREATE TABLE IF NOT EXISTS refuges (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    city TEXT,
-    address TEXT,
-    phone TEXT
-  )
-`);
+    // test recup refuges
+    const [refuges] = await connection.query("SELECT * FROM refuges");
+    console.log("Refuges :", refuges);
 
-await db.exec(`
-  CREATE TABLE IF NOT EXISTS animals (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    type TEXT,
-    age INTEGER,
-    sex TEXT,
-    size TEXT,
-    description TEXT,
-    image TEXT,
-    refuge_id INTEGER,
-    FOREIGN KEY(refuge_id) REFERENCES refuges(id)
-  )
-`);
+    // test recup users
+    const [users] = await connection.query("SELECT * FROM users");
+    console.log("Utilisateurs :", users);
 
+    await connection.end();
+    console.log("Connexion fermée ✅");
+  } catch (err) {
+    console.error("Erreur lors du test :", err);
+    process.exit(1);
+  }
+}
 
-
-console.log("Tables SQLite créées ✅");
+await testDB();

@@ -14,158 +14,118 @@
 
 <body class="swipe-mode">
 
-  <!-- Navigation retour -->
-  <nav class="top-nav">
-    <a href="index.html" class="btn-back" aria-label="Retour à l'accueil">
-      <i class="ri-arrow-left-line"></i> Accueil
-    </a>
+  <!-- =============================
+       NAVBAR
+  ============================= -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-logo">
+        <a href="index.html" class="logo-link">
+          <img src="../assets/icon.png" class="emoji-icon"> AdopteUnAmi
+        </a>
+      </div>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="nav-right" id="navMenu">
+      <a href="animal.html">Animaux</a>
+      <a href="refuge.html">Refuges</a>
+      <a href="swipe.html">Swipe</a>
+      <a href="likes.html">Likes</a>
+      <a href="login.html" style="background:var(--secondary-color); color:white;">Login</a>
+    </div>
   </nav>
 
   <div class="likes-badge">
-  ❤️ <span id="likesCount">0</span>
-</div>
+    ❤️ <span id="likesCount">0</span>
+  </div>
 
 
-  <!-- Cartes swipe -->
+
+  <!-- =============================
+       CONTAINER SWIPE
+  ============================= -->
   <main class="swipe-container" id="cardContainer">
-
-    <div class="card" style="z-index: 1; transform: scale(0.9) translateY(20px);">
-      <img src="../assets/luna.jpg" class="card-img" alt="Chat calme à adopter">
-      <div class="card-content">
-        <h3>Misty, 4 ans</h3>
-        <p>Calme, aime dormir au soleil.</p>
-      </div>
-    </div>
-
-    <div class="card" style="z-index: 2; transform: scale(0.95) translateY(10px);">
-      <img src="../assets/Gemal.jpg" class="card-img" alt="Chien sportif à adopter">
-      <div class="card-content">
-        <h3>Rocky, 1 an</h3>
-        <p>Très sportif, cherche jardin.</p>
-      </div>
-    </div>
-
-    <div class="card active-card" style="z-index: 3;">
-      <img src="../assets/toudou.jpg" class="card-img" alt="Chien affectueux à adopter">
-      <div class="card-content">
-        <h3>Luna, 2 ans</h3>
-        <p>Douce et affectueuse. Ok chats.</p>
-      </div>
-    </div>
-
+    <!-- Les cartes seront injectées ici par swipe.js -->
   </main>
 
+  <!-- Boutons d’action -->
   <div class="buttons-container">
-  <button class="action-btn btn-back" onclick="undoSwipe()" aria-label="Revenir en arrière">
-    <i class="ri-arrow-go-back-line"></i>
-  </button>
+    <button class="action-btn btn-back" onclick="undoSwipe()" aria-label="Revenir en arrière">
+      <i class="ri-arrow-go-back-line"></i>
+    </button>
 
-  <button class="action-btn btn-nope" onclick="swipe('left')" aria-label="Refuser">
-    <i class="ri-close-line"></i>
-  </button>
+    <button class="action-btn btn-nope" onclick="swipe('left')" aria-label="Refuser">
+      <i class="ri-close-line"></i>
+    </button>
 
-  <button class="action-btn btn-like" onclick="swipe('right')" aria-label="Aimer">
-    <i class="ri-heart-fill"></i>
-  </button>
-</div>
+    <button class="action-btn btn-like" onclick="swipe('right')" aria-label="Aimer">
+      <i class="ri-heart-fill"></i>
+    </button>
+  </div>
 
+<!-- =============================
+     FOOTER
+============================= -->
+<footer class="site-footer">
+  <div class="footer-container">
 
-<script>
-  const container = document.getElementById("cardContainer");
-  const likesCount = document.getElementById("likesCount");
+    <!-- Colonne 1 : Logo -->
+    <div class="footer-col">
+      <h4 class="logo">
+      <img src="../assets/icon.png" class="emoji-icon" alt="logo">
+      AdopteUnAmi
+    </h4>
 
-  let history = [];
+      <p>
+        Plateforme de mise en relation entre refuges
+        et futurs adoptants en France.
+      </p>
+    </div>
 
-  let likedAnimals = JSON.parse(localStorage.getItem("likedAnimals")) || [];
+    <!-- Colonne 2 : Navigation -->
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="animal.html">Animaux</a></li>
+        <li><a href="swipe.html">Swipe</a></li>
+        <li><a href="likes.html">Likes</a></li>
+      </ul>
+    </div>
 
-  updateBadge();
+    <!-- Colonne 3 : Informations -->
+    <div class="footer-col">
+      <h4>Informations</h4>
+      <ul>
+        <li><a href="avis.html">Avis</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mentionslegales.html">Mentions légales</a></li>
+        <li><a href="paramètres.html">Paramètres</a></li>
+      </ul>
+    </div>
 
-  function swipe(direction) {
-    const cards = container.querySelectorAll(".card");
-    const activeCard = cards[cards.length - 1];
-    if (!activeCard) return;
+    <!-- Colonne 4 : Réseaux -->
+    <div class="footer-col">
+      <h4>Suivez-nous</h4>
+      <div class="footer-socials">
+        <a href="#"><i class="ri-facebook-fill"></i></a>
+        <a href="#"><i class="ri-instagram-line"></i></a>
+        <a href="#"><i class="ri-twitter-x-line"></i></a>
+      </div>
+    </div>
 
-    const animal = {
-      id: activeCard.querySelector("h3").innerText, // ID simple mais unique ici
-      name: activeCard.querySelector("h3").innerText,
-      description: activeCard.querySelector("p").innerText,
-      image: activeCard.querySelector("img").src
-    };
+  </div>
 
-    const alreadyLiked = likedAnimals.some(a => a.id === animal.id);
+  <div class="footer-bottom">
+    © 2025 AdoptMe — Projet pédagogique • Tous droits réservés
+  </div>
+</footer>
 
-    history.push({
-      element: activeCard.outerHTML,
-      animal: animal,
-      liked: direction === "right" && !alreadyLiked
-    });
-
-    if (direction === "right") {
-      if (!alreadyLiked) {
-        likedAnimals.push(animal);
-        localStorage.setItem("likedAnimals", JSON.stringify(likedAnimals));
-        updateBadge();
-      }
-      activeCard.classList.add("swipe-right");
-    } else {
-      activeCard.classList.add("swipe-left");
-    }
-
-    setTimeout(() => {
-      activeCard.remove();
-      reorganizeCards();
-    }, 500);
-  }
-
-  function undoSwipe() {
-    if (history.length === 0) return;
-
-    const last = history.pop();
-
-    if (last.liked) {
-      likedAnimals = likedAnimals.filter(a => a.id !== last.animal.id);
-      localStorage.setItem("likedAnimals", JSON.stringify(likedAnimals));
-      updateBadge();
-    }
-
-    container.insertAdjacentHTML("beforeend", last.element);
-    reorganizeCards();
-  }
-
-  function updateBadge() {
-    if (likesCount) {
-      likesCount.textContent = likedAnimals.length;
-    }
-  }
-
-  function reorganizeCards() {
-    const cards = container.querySelectorAll(".card");
-
-    if (cards.length === 0) {
-      container.innerHTML = `
-        <div style="text-align:center; margin-top:50%;">
-          <h2 style="color:#3f3b57">Plus d'animaux disponibles</h2>
-          <a href="likes.html" class="btn-like-list">Voir mes coups de cœur ❤️</a>
-        </div>`;
-      return;
-    }
-
-    cards.forEach((card, index) => {
-      card.style.transition = "transform 0.5s ease";
-      card.style.zIndex = index + 1;
-
-      if (index === cards.length - 1) {
-        card.style.transform = "scale(1) translateY(0)";
-      } else if (index === cards.length - 2) {
-        card.style.transform = "scale(0.95) translateY(10px)";
-      } else {
-        card.style.transform = "scale(0.9) translateY(20px)";
-      }
-    });
-  }
-</script>
-
-
-
+  <!-- Lien vers le JS externe -->
+  <script src="../js/swipe.js"></script>
 </body>
 </html>
