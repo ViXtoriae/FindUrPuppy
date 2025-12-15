@@ -14,10 +14,6 @@ async function loadAnimals() {
     
 
     animals.forEach(animal => {
-      // Vérifie si l'image existe, sinon utilise placeholder
-      
-
-
       const imageSrc = animal.image && animal.image.trim() !== "" 
         ? `/assets/${animal.image}` 
         : `/assets/placeholder.jpg`;
@@ -30,11 +26,14 @@ async function loadAnimals() {
       const card = document.createElement("div");
       card.className = "animal-card";
       card.innerHTML = `
-        <img src="${imageSrc}" alt="${animal.name}" 
-            onerror="this.src='/assets/placeholder.jpg'">
-        <h3>${animal.name}</h3>
-        <p>${animal.sex} - ${animal.type}</p>
-      `;
+  <img src="${imageSrc}" alt="${animal.name}" onerror="this.src='/assets/placeholder.jpg'">
+  <h3>${animal.name}</h3>
+  <p class="animal-sex">${animal.sex}</p>
+  <p class="animal-type">${animal.type}</p>
+  <p class="animal-refuge">${animal.refuge_name || "Inconnu"}</p>
+`;
+
+
 
 
 
@@ -43,19 +42,30 @@ async function loadAnimals() {
         const modal = document.getElementById("animalModal");
         const details = document.getElementById("modalDetails");
 
-        details.innerHTML = `
-          <h2>${animal.name}</h2>
-          <img 
-            src="${imageSrc}" 
-            alt="${animal.name}" 
-            style="width:100%;border-radius:8px;"
-          >
-          <p><strong>Type :</strong> ${animal.type}</p>
-          <p><strong>Âge :</strong> ${animal.age} ans</p>
-          <p><strong>Sexe :</strong> ${animal.sex}</p>
-          <p><strong>Taille :</strong> ${animal.size}</p>
-          <p>${animal.description}</p>
-        `;
+      details.innerHTML = `
+        <div class="animal-modal-content">
+          <div class="animal-modal-left">
+            <img 
+              src="${imageSrc}" 
+              alt="${animal.name}" 
+              class="animal-modal-img"
+            >
+          </div>
+          <div class="animal-modal-right">
+            <h2>${animal.name}</h2>
+            <p><strong>Type :</strong> ${animal.type}</p>
+            <p><strong>Âge :</strong> ${animal.age} ans</p>
+            <p><strong>Sexe :</strong> ${animal.sex}</p>
+            <p><strong>Taille :</strong> ${animal.size}</p>
+            <p>${animal.description}</p>
+            </br>
+            <p><strong>Refuge actuel :</strong> ${animal.refuge_name || "Inconnu"}</p>
+            <p><strong>Téléphone :</strong> ${animal.refuge_phone || "Non disponible"}</p>
+          </div>
+        </div>
+      `;
+
+
         modal.style.display = "flex";
       });
 
@@ -85,29 +95,35 @@ function applyFilters() {
   const searchValue = document.getElementById("searchInput").value.toLowerCase();
   const typeFilter = document.getElementById("filterType").value.toLowerCase();
   const sexFilter = document.getElementById("filterSex").value.toLowerCase();
+  const refugeFilter = document.getElementById("filterRefuge").value.toLowerCase();
 
   const cards = document.querySelectorAll(".animal-card");
 
   cards.forEach(card => {
     const name = card.querySelector("h3").textContent.toLowerCase();
-    const type = card.querySelector("p").textContent.toLowerCase();
-    const sex = card.querySelector("p").textContent.toLowerCase();
+    const type = card.querySelector(".animal-type").textContent.toLowerCase();
+    const sex = card.querySelector(".animal-sex").textContent.toLowerCase();
+    const refuge = card.querySelector(".animal-refuge").textContent.toLowerCase();
 
     let matches = true;
 
     if (searchValue && !name.includes(searchValue)) {
       matches = false;
     }
-    if (typeFilter && !type.includes(typeFilter)) {
+    if (typeFilter && type !== typeFilter) {
       matches = false;
     }
-    if (sexFilter && !sex.includes(sexFilter)) {
+    if (sexFilter && sex !== sexFilter) {
+      matches = false;
+    }
+    if (refugeFilter && refuge !== refugeFilter) {
       matches = false;
     }
 
     card.style.display = matches ? "block" : "none";
   });
 }
+
 
 //Filtres reset
 function resetFilters() {
@@ -128,13 +144,6 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
     applyFilters();         
   }
 });
-
-
-
-
-
-
-
 
 
 loadAnimals();

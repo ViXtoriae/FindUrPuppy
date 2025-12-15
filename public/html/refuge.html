@@ -2,11 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FindUrPuppy - Animaux</title>
-
+  <title>Nos refuges</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
-
+<body>
 <!-- =============================
      NAVBAR
 ============================= -->
@@ -30,57 +29,25 @@
     <a href="login.html" style="background:var(--secondary-color); color:white;">Login</a>
   </div>
 </nav>
-
-
+    
   <section class="page-header">
-    <h1> Animaux disponibles </h1>
+    <h1>Nos refuges partenaires</h1>
   </section>
 
-  <!-- Barre de recherche -->
-  <section class="filter-card">
-  <div class="filter-grid">
-    <input type="text" id="searchInput" placeholder="Rechercher par nom...">
+  <!-- Liste des refuges -->
+  <section id="refugeList" class="card-grid"></section>
 
-    <select id="filterType">
-      <option value="">Tous les types</option>
-      <option value="chien">Chiens</option>
-      <option value="chat">Chats</option>
-    </select>
-
-    <select id="filterSex">
-      <option value="">Tous les sexes</option>
-      <option value="male">Mâle</option>
-      <option value="femelle">Femelle</option>
-    </select>
-
-    <select id="filterRefuge">
-      <option value="">Tous les refuges</option>
-      <option value="Refuge de l'Espoir">Refuge de l'Espoir</option>
-      <option value="SPA Paris">SPA Paris</option>
-      <option value="Animaux Secours">Animaux Secours</option>
-    </select>
-  </div>
-  
-  
-
-  <button id="filter-btn" onclick="applyFilters()">Filtrer</button>
-  <button id="reset-btn" onclick="resetFilters()">Reset</button>
-</section>
-
-
-  <!-- Liste des animaux -->
-  <div class="animal-list" id="animalList"></div>
-  <!-- Popup -->
-    <div class="modal" id="animalModal">
-      <div class="modal-content">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <div id="modalDetails"></div>
-      </div>
+  <!-- Modal pour détails refuge -->
+  <div id="refugeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="refugeDetails"></div>
+      <div id="refugeAnimals"></div>
     </div>
- 
-  <script src="../js/animals.js"></script>
+  </div>
 
-  <!-- =============================
+
+ <!-- =============================
      FOOTER
 ============================= -->
 <footer class="site-footer">
@@ -137,5 +104,6 @@
   </div>
 </footer>
 
+  <script src="../js/refuge.js"></script>
 </body>
 </html>

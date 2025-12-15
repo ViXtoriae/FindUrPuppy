@@ -81,6 +81,31 @@ img {
   color: var(--white);
 }
 
+.emoji-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.logo {
+  display: flex;
+  align-items: center; /* aligne verticalement image + texte */
+  gap: 8px;
+}
+.logo-link {
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
 /* Hamburger */
 .hamburger {
   display: none;
@@ -476,10 +501,11 @@ body.swipe-mode {
 
 /* Conteneur des cartes empilées */
 .swipe-container {
-    position: relative;
-    width: 320px;
-    height: 500px;
-    margin-top: 0;
+  position: relative;
+  width: 320px;
+  height: 500px;   /* taille fixe des cartes */
+  margin-top: 120px; /* espace sous la navbar */
+  margin-bottom: 40px; /* petit espace avant le footer */
 }
 
 /* Style des cartes dans le jeu */
@@ -584,6 +610,18 @@ h1 {
   }
 }
 
+.filter-bar {
+  display: flex;
+  gap: 10px;        /* espace entre les éléments */
+  margin-bottom: 20px;
+}
+
+.filter-bar input,
+.filter-bar select,
+.filter-bar button {
+  padding: 6px 10px;
+  font-size: 14px;
+}
 
 
 .animal-card {
@@ -623,13 +661,60 @@ h1 {
 
 .modal-content {
   background: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
-  width: 400px;
+  width: 850px;
   max-width: 90%;
+  max-height: 90%;
   text-align: left;
   position: relative;
 }
+
+/* Conteneur global du modal */
+#animalModal {
+  display: none;              /* caché par défaut */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Contenu du modal */
+.animal-modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 900px;           /* plus grand */
+  width: 90%;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Image à gauche */
+.animal-modal-left {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animal-modal-img {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 6px;
+}
+
+/* Texte à droite */
+.animal-modal-right {
+  flex: 2;
+}
+
 
 .close-btn {
   position: absolute;
@@ -701,6 +786,10 @@ h1 {
   color: white;
   padding: 4rem 1rem 2rem;
   margin-top: 4rem;
+<<<<<<< HEAD
+=======
+  width: 100%;
+>>>>>>> 07526c56121da7f671f5109f6eec564bc104c558
 }
 
 .footer-container {
@@ -787,6 +876,37 @@ h1 {
     justify-content: center;
   }
 }
+<<<<<<< HEAD
+=======
+/* ==============================
+   REFUGE
+============================== */
+.refuge-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.refuge-card:hover {
+  background: #f9f9f9;
+}
+
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+#refugeAnimals p {
+  text-indent: 20px; /* alinéa de 20px */
+}
+
+>>>>>>> 07526c56121da7f671f5109f6eec564bc104c558
 
 
 
