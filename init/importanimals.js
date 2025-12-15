@@ -17,7 +17,7 @@ async function importAnimals() {
 
     // Lire le fichier JSON (chemin robuste)
     const data = JSON.parse(
-      fs.readFileSync(path.join(process.cwd(), "public", "animals.json"), "utf-8")
+      fs.readFileSync(path.join(process.cwd(), "animals.json"), "utf-8")
     );
 
     // Insérer chaque animal
