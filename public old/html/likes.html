@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mes coups de cœur - AdopteUnAmi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7fb;
+      margin: 0;
+    }
+
+    .top-nav {
+      padding: 1rem;
+      background: #3f3b57;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .likes-badge {
+      background: white;
+      color: #3f3b57;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .export-btn { background: #6c63ff; color: white; }
+    .csv-btn { background: #00a86b; color: white; }
+    .clear-btn { background: #e74c3c; color: white; }
+
+    .likes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .remove-btn {
+      background: #ff6b6b;
+      color: white;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+
+    /* Animation suppression */
+    .fade-out {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.4s ease;
+    }
+
+    /* Animation cœur */
+    .heart-pop {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 3rem;
+      color: red;
+      animation: pop 0.6s ease forwards;
+      pointer-events: none;
+    }
+
+    @keyframes pop {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      50% { transform: translate(-50%, -50%) scale(1.4); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="top-nav">
+  <a href="swipe.html">← Retour à la page d'accueil</a>
+  <div class="likes-badge">❤️ <span id="likesCount">0</span></div>
+</nav>
+
+<section class="section">
+  <h1>Mes coups de cœur ❤️</h1>
+
+  <div class="actions">
+    <button class="export-btn" onclick="exportJSON()">Exporter JSON</button>
+    <button class="csv-btn" onclick="exportCSV()">Exporter CSV</button>
+    <button class="clear-btn" onclick="clearAll()">Tout supprimer</button>
+  </div>
+
+  <div id="likesContainer" class="likes-grid"></div>
+</section>
+
+<script>
+  const container = document.getElementById("likesContainer");
+  const likesCount = document.getElementById("likesCount");
+
+  let likedAnimals = JSON.parse(localStorage.getItem("likedAnimals")) || [];
+
+  updateBadge();
+  renderLikes();
+
+  function updateBadge() {
+    likesCount.textContent = likedAnimals.length;
+  }
+
+  function renderLikes() {
+    container.innerHTML = "";
+
+    if (likedAnimals.length === 0) {
+      container.innerHTML = "<p>Aucun animal liké.</p>";
+      return;
+    }
+
+    likedAnimals.forEach(animal => {
+      container.innerHTML += `
+        <div class="card like-card" data-id="${animal.id}">
+          <img src="${animal.image}" alt="${animal.name}">
+          <div class="heart-pop">❤️</div>
+          <div class="card-content">
+            <h3>${animal.name}</h3>
+            <p>${animal.description}</p>
+            <button class="remove-btn" onclick="removeLike('${animal.id}')">Supprimer</button>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function removeLike(id) {
+    const card = document.querySelector(`.like-card[data-id="${id}"]`);
+    if (!card) return;
+
+    card.classList.add("fade-out");
+
+    setTimeout(() => {
+      likedAnimals = likedAnimals.filter(a => a.id !== id);
+      localStorage.setItem("likedAnimals", JSON.stringify(likedAnimals));
+      updateBadge();
+      renderLikes();
+    }, 400);
+  }
+
+  function clearAll() {
+    if (!confirm("Supprimer tous les coups de cœur ?")) return;
+    localStorage.removeItem("likedAnimals");
+    likedAnimals = [];
+    updateBadge();
+    renderLikes();
+  }
+
+  function exportJSON() {
+    if (likedAnimals.length === 0) return alert("Aucun like à exporter.");
+
+    const blob = new Blob(
+      [JSON.stringify(likedAnimals, null, 2)],
+      { type: "application/json" }
+    );
+
+    download(blob, "adopteunami_likes.json");
+  }
+
+  function exportCSV() {
+    if (likedAnimals.length === 0) return alert("Aucun like à exporter.");
+
+    let csv = "Nom,Description,Image\n";
+    likedAnimals.forEach(a => {
+      csv += `"${a.name}","${a.description}","${a.image}"\n`;
+    });
+
+    const blob = new Blob([csv], { type: "text/csv" });
+    download(blob, "adopteunami_likes.csv");
+  }
+
+  function download(blob, filename) {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+</script>
+
+</body>
+</html>

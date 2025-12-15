@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mode Swipe - AdopteUnAmi</title>
+  <meta name="description" content="Découvrez les animaux à adopter grâce au mode swipe d’AdopteUnAmi.">
+  <meta name="author" content="AdopteUnAmi">
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body class="swipe-mode">
+
+  <!-- Navigation retour -->
+  <nav class="top-nav">
+    <a href="index.html" class="btn-back" aria-label="Retour à l'accueil">
+      <i class="ri-arrow-left-line"></i> Accueil
+    </a>
+  </nav>
+
+  <div class="likes-badge">
+  ❤️ <span id="likesCount">0</span>
+</div>
+
+
+  <!-- Cartes swipe -->
+  <main class="swipe-container" id="cardContainer">
+
+    <div class="card" style="z-index: 1; transform: scale(0.9) translateY(20px);">
+      <img src="../assets/luna.jpg" class="card-img" alt="Chat calme à adopter">
+      <div class="card-content">
+        <h3>Misty, 4 ans</h3>
+        <p>Calme, aime dormir au soleil.</p>
+      </div>
+    </div>
+
+    <div class="card" style="z-index: 2; transform: scale(0.95) translateY(10px);">
+      <img src="../assets/Gemal.jpg" class="card-img" alt="Chien sportif à adopter">
+      <div class="card-content">
+        <h3>Rocky, 1 an</h3>
+        <p>Très sportif, cherche jardin.</p>
+      </div>
+    </div>
+
+    <div class="card active-card" style="z-index: 3;">
+      <img src="../assets/toudou.jpg" class="card-img" alt="Chien affectueux à adopter">
+      <div class="card-content">
+        <h3>Luna, 2 ans</h3>
+        <p>Douce et affectueuse. Ok chats.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="buttons-container">
+  <button class="action-btn btn-back" onclick="undoSwipe()" aria-label="Revenir en arrière">
+    <i class="ri-arrow-go-back-line"></i>
+  </button>
+
+  <button class="action-btn btn-nope" onclick="swipe('left')" aria-label="Refuser">
+    <i class="ri-close-line"></i>
+  </button>
+
+  <button class="action-btn btn-like" onclick="swipe('right')" aria-label="Aimer">
+    <i class="ri-heart-fill"></i>
+  </button>
+</div>
+
+
+<script>
+  const container = document.getElementById("cardContainer");
+  const likesCount = document.getElementById("likesCount");
+
+  let history = [];
+
+  let likedAnimals = JSON.parse(localStorage.getItem("likedAnimals")) || [];
+
+  updateBadge();
+
+  function swipe(direction) {
+    const cards = container.querySelectorAll(".card");
+    const activeCard = cards[cards.length - 1];
+    if (!activeCard) return;
+
+    const animal = {
+      id: activeCard.querySelector("h3").innerText, // ID simple mais unique ici
+      name: activeCard.querySelector("h3").innerText,
+      description: activeCard.querySelector("p").innerText,
+      image: activeCard.querySelector("img").src
+    };
+
+    const alreadyLiked = likedAnimals.some(a => a.id === animal.id);
+
+    history.push({
+      element: activeCard.outerHTML,
+      animal: animal,
+      liked: direction === "right" && !alreadyLiked
+    });
+
+    if (direction === "right") {
+      if (!alreadyLiked) {
+        likedAnimals.push(animal);
+        localStorage.setItem("likedAnimals", JSON.stringify(likedAnimals));
+        updateBadge();
+      }
+      activeCard.classList.add("swipe-right");
+    } else {
+      activeCard.classList.add("swipe-left");
+    }
+
+    setTimeout(() => {
+      activeCard.remove();
+      reorganizeCards();
+    }, 500);
+  }
+
+  function undoSwipe() {
+    if (history.length === 0) return;
+
+    const last = history.pop();
+
+    if (last.liked) {
+      likedAnimals = likedAnimals.filter(a => a.id !== last.animal.id);
+      localStorage.setItem("likedAnimals", JSON.stringify(likedAnimals));
+      updateBadge();
+    }
+
+    container.insertAdjacentHTML("beforeend", last.element);
+    reorganizeCards();
+  }
+
+  function updateBadge() {
+    if (likesCount) {
+      likesCount.textContent = likedAnimals.length;
+    }
+  }
+
+  function reorganizeCards() {
+    const cards = container.querySelectorAll(".card");
+
+    if (cards.length === 0) {
+      container.innerHTML = `
+        <div style="text-align:center; margin-top:50%;">
+          <h2 style="color:#3f3b57">Plus d'animaux disponibles</h2>
+          <a href="likes.html" class="btn-like-list">Voir mes coups de cœur ❤️</a>
+        </div>`;
+      return;
+    }
+
+    cards.forEach((card, index) => {
+      card.style.transition = "transform 0.5s ease";
+      card.style.zIndex = index + 1;
+
+      if (index === cards.length - 1) {
+        card.style.transform = "scale(1) translateY(0)";
+      } else if (index === cards.length - 2) {
+        card.style.transform = "scale(0.95) translateY(10px)";
+      } else {
+        card.style.transform = "scale(0.9) translateY(20px)";
+      }
+    });
+  }
+</script>
+
+
+
+</body>
+</html>

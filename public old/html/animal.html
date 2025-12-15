@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>FindUrPuppy - Animaux</title>
+
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<!--Navbar (vers les autres tabs)-->
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-logo"><a href="index.html">AdoptMe</a></div>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-right" id="navMenu">
+      <a href="animal.html">Animaux</a>
+      <a href="#refuges">Refuges</a>
+      <a href="swipe.html">Swipe</a>
+      <a href="avis.html">Contact</a>
+      <a href="login.html" style="background:var(--secondary-color); color:white;">Login</a>
+    </div>
+  </nav>
+
+
+  <section class="page-header">
+    <h1>🐶🐱 Animaux disponibles 🐱🐶</h1>
+  </section>
+
+  <!-- Barre de recherche -->
+  <section class="filter-card">
+  <div class="filter-grid">
+    <input type="text" id="searchInput" placeholder="Rechercher par nom...">
+
+    <select id="filterType">
+      <option value="">Tous les types</option>
+      <option value="chien">Chiens</option>
+      <option value="chat">Chats</option>
+    </select>
+
+    <select id="filterSex">
+      <option value="">Tous les sexes</option>
+      <option value="male">Mâle</option>
+      <option value="femelle">Femelle</option>
+    </select>
+  </div>
+
+  <button id="filter-btn" onclick="applyFilters()">Filtrer</button>
+  <button id="reset-btn" onclick="resetFilters()">Reset</button>
+</section>
+
+
+  <!-- Liste des animaux -->
+  <div class="animal-list" id="animalList"></div>
+  <!-- Popup -->
+    <div class="modal" id="animalModal">
+      <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <div id="modalDetails"></div>
+      </div>
+    </div>
+ 
+  <script src="../js/animals.js"></script>
+</body>
+</html>
