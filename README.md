@@ -6,10 +6,10 @@ Groupe:
 
 Objectif: Créer un site web reliant les refuges de France afin tous les regrouper en un seul endroit
 
-###Partie Init
+### Partie Init
  - Aller dans le repo 'init'
- - lancer le initTables.js
- - lancer importanimals.js
+ - Lancer le initTables.js
+ - Lancer importanimals.js
  - Revenir dans le repo initital
  - Lancer server.js
 
