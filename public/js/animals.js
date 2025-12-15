@@ -14,10 +14,6 @@ async function loadAnimals() {
     
 
     animals.forEach(animal => {
-      // Vérifie si l'image existe, sinon utilise placeholder
-      
-
-
       const imageSrc = animal.image && animal.image.trim() !== "" 
         ? `/assets/${animal.image}` 
         : `/assets/placeholder.jpg`;
@@ -128,13 +124,6 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
     applyFilters();         
   }
 });
-
-
-
-
-
-
-
 
 
 loadAnimals();
