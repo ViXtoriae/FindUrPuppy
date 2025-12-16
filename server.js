@@ -15,11 +15,8 @@ const db = await mysql.createConnection({
   database: "adoptme"
 });
 app.use(express.static(path.join(process.cwd(), "public")));
-console.log("Connexion MySQL établie ✅");
+console.log("Connexion MySQL établie !!! ✅");
 
-// =============================
-// ROUTES API
-// =============================
 
 // Tous les animaux avec infos refuge
 app.get("/api/animals", async (req, res) => {
@@ -60,6 +57,7 @@ app.get("/api/refuges", async (req, res) => {
   }
 });
 
+
 // Animaux d'un refuge spécifique
 app.get("/api/refuges/:id/animals", async (req, res) => {
   try {
@@ -83,7 +81,6 @@ app.get("/api/refuges/:id/animals", async (req, res) => {
     res.status(500).json({ error: "Erreur serveur" });
   }
 });
-
 
 
 // 5 animaux aléatoires avec infos refuge

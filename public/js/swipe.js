@@ -1,5 +1,3 @@
-// swipe.js
-
 const container = document.getElementById("cardContainer");
 const likesCount = document.getElementById("likesCount");
 
@@ -43,9 +41,6 @@ async function loadSwipeAnimals() {
 }
 
 loadSwipeAnimals();
-
-// … garde tes fonctions swipe(), undoSwipe(), updateBadge(), reorganizeCards() identiques
-
 
 function swipe(direction) {
   const cards = container.querySelectorAll(".card");
@@ -132,39 +127,4 @@ function reorganizeCards() {
 }
 
 
-async function loadSwipeAnimals() {
-  try {
-    const response = await fetch("http://localhost:3000/api/animals/random");
-    const animals = await response.json();
-
-    const container = document.getElementById("cardContainer");
-    container.innerHTML = "";
-
-    animals.forEach((animal, index) => {
-      const imageSrc = animal.image && animal.image.trim() !== "" 
-        ? `/assets/${animal.image}` 
-        : `/assets/placeholder.jpg`;
-
-      const card = document.createElement("div");
-      card.className = "card";
-      card.style.zIndex = index + 1;
-
-      card.innerHTML = `
-        <img src="${imageSrc}" class="card-img" alt="${animal.description}">
-        <div class="card-content">
-          <h3>${animal.name}, ${animal.age} ans</h3>
-          <p>${animal.description}</p>
-        </div>
-      `;
-
-      container.appendChild(card);
-    });
-
-    reorganizeCards(); // ta fonction existante pour empiler les cartes
-  } catch (err) {
-    console.error("Erreur chargement animaux swipe:", err);
-  }
-}
-
-// Charger automatiquement au démarrage
 document.addEventListener("DOMContentLoaded", loadSwipeAnimals);

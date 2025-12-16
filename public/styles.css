@@ -467,7 +467,7 @@ img {
 
 /* ==============================
    SECTION SWIPE (JEU)
-   linked à pour swipe.html
+   linked à swipe.html
 ============================== */
 .main-swipe-block {
     display: flex;
@@ -539,8 +539,14 @@ body.swipe-mode {
 }
 
 /* Animations JS */
-.swipe-left { transform: translateX(-200px) rotate(-30deg) !important; opacity: 0; }
-.swipe-right { transform: translateX(200px) rotate(30deg) !important; opacity: 0; }
+.swipe-left { 
+  transform: translateX(-140%) rotate(-18deg) !important; 
+  opacity: 0; 
+}
+.swipe-right { 
+  transform: translateX(140%) rotate(18deg) !important; 
+  opacity: 0; 
+}
 
 /* Boutons d'action */
 .buttons-container {

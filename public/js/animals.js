@@ -145,5 +145,21 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
   }
 });
 
+//Redirige
+function goToAnimals() {
+  const search = document.getElementById("searchInput").value;
+  const type = document.getElementById("filterType").value;
+  const sex = document.getElementById("filterSex").value;
+  const refuge = document.getElementById("filterRefuge").value;
+
+  const params = new URLSearchParams();
+
+  if (search) params.append("search", search);
+  if (type) params.append("type", type);
+  if (sex) params.append("sex", sex);
+  if (refuge) params.append("refuge", refuge);
+
+  window.location.href = "animal.html?" + params.toString();
+}
 
 loadAnimals();

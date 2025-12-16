@@ -7,18 +7,21 @@
   <link rel="stylesheet" href="../styles.css">
   <style>
     .auth-body {
+      display: flex;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #f6d365, #fda085);
-      display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       min-height: 100vh;
     }
     .auth-container {
+      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
+      padding-top: 80px;
     }
     .auth-card {
       background: #fff;
@@ -154,7 +157,7 @@
       return;
     }
 
-    // ⚠️ doit correspondre au champ dans ton template EmailJS
+    // linked au template EmailJS
     const templateParams = {
       to_email: email
     };
