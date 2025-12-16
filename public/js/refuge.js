@@ -25,17 +25,18 @@ async function showRefugeModal(refuge) {
   const modal = document.getElementById("refugeModal");
   const details = document.getElementById("refugeDetails");
   const animalsDiv = document.getElementById("refugeAnimals");
+  const imageBox = document.getElementById("refugeImage");
 
   details.innerHTML = `
     <h2>${refuge.name}</h2>
     <p><strong>Ville :</strong> ${refuge.city}</p>
     <p><strong>Adresse :</strong> ${refuge.address}</p>
     <p><strong>Téléphone :</strong> ${refuge.phone}</p>
-    <hr>
+    <br><br>
     <h3>Animaux disponibles :</h3>
   `;
 
-  // Récupérer les animaux du refuge
+  // Récup les animaux du refuge
   const response = await fetch(`http://localhost:3000/api/refuges/${refuge.id}/animals`);
   const animals = await response.json();
 
@@ -43,8 +44,19 @@ async function showRefugeModal(refuge) {
     ? animals.map(a => `<p>${a.name} (${a.type}, ${a.age} ans)</p>`).join("")
     : "<p>Aucun animal pour le moment.</p>";
 
+
+  imageBox.innerHTML = `
+    <img src="../assets/${refuge.image}" alt="${refuge.name}" style="width:100%; border-radius:10px;">
+  `;
+
   modal.style.display = "flex";
 }
+
+function closeModal() {
+  document.getElementById("refugeModal").style.display = "none";
+}
+
+window.onload = loadRefuges;
 
 function closeModal() {
   document.getElementById("refugeModal").style.display = "none";

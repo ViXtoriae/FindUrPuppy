@@ -34,9 +34,6 @@ async function loadAnimals() {
 `;
 
 
-
-
-
       // Au clic → ouvrir popup
       card.addEventListener("click", () => {
         const modal = document.getElementById("animalModal");
@@ -56,7 +53,7 @@ async function loadAnimals() {
             <p><strong>Type :</strong> ${animal.type}</p>
             <p><strong>Âge :</strong> ${animal.age} ans</p>
             <p><strong>Sexe :</strong> ${animal.sex}</p>
-            <p><strong>Taille :</strong> ${animal.size}</p>
+            <p><strong>Taille :</strong> ${animal.size}</p><br>
             <p>${animal.description}</p>
             </br>
             <p><strong>Refuge actuel :</strong> ${animal.refuge_name || "Inconnu"}</p>
@@ -85,10 +82,28 @@ async function loadAnimals() {
       }
     });
 
+    const { search, type, sex, refuge } = getQueryParams();
+    document.getElementById("searchInput").value = search; 
+    document.getElementById("filterType").value = type; 
+    document.getElementById("filterSex").value = sex; 
+    document.getElementById("filterRefuge").value = refuge;
+    applyFilters();
   } catch (err) {
     console.error("Erreur lors du chargement :", err);
   }
 }
+
+//Recup depuis index
+function getQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    search: params.get("search") || "",
+    type: params.get("type") || "",
+    sex: params.get("sex") || "",
+    refuge: params.get("refuge") || ""
+  };
+}
+
 
 //Filtre
 function applyFilters() {
@@ -130,10 +145,11 @@ function resetFilters() {
   document.getElementById("searchInput").value = "";
   document.getElementById("filterType").value = "";
   document.getElementById("filterSex").value = "";
+  document.getElementById("filterRefuge").value = "";
 
   const cards = document.querySelectorAll(".animal-card");
   cards.forEach(card => {
-    card.style.display = "block"; // réaffiche toutes les cartes
+    card.style.display = "block";
   });
 }
 

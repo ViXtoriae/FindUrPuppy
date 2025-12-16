@@ -33,6 +33,7 @@ async function initAll() {
         city VARCHAR(100),
         address VARCHAR(255),
         phone VARCHAR(20),
+        image VARCHAR(255) DEFAULT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
       )
     `);
@@ -61,19 +62,7 @@ async function initAll() {
       console.log("Utilisateur admin créé (login: admin / mdp: 1234)");
     }
 
-    // Refuges par défaut
-    const [refRows] = await connection.query("SELECT * FROM refuges");
-    if (refRows.length === 0) {
-      await connection.query(`
-        INSERT INTO refuges (name, city, address, phone) VALUES
-        ('Refuge de l''Espoir', 'Paris', '12 rue des Animaux', '0102030405'),
-        ('SPA Paris', 'Paris', '39 Boulevard Saint-Michel', '01 40000202'),
-        ('Animaux Secours', 'Marseille', '5 Avenue de la Liberté', '0491000303')
-      `);
-      console.log("Refuges ajoutés");
-    }
-
-    console.log("Initialisation terminée ✅");
+    console.log("Initialisation terminée !!");
     await connection.end();
   } catch (err) {
     console.error("Erreur lors de l'initialisation :", err);

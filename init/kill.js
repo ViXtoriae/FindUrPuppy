@@ -11,7 +11,7 @@ async function dropDB() {
     console.log("Connexion MySQL établie");
 
     await connection.query("DROP DATABASE IF EXISTS adoptme");
-    console.log("Base de données 'adoptme' supprimée ❌");
+    console.log("Base de données 'adoptme' supprimée");
 
     await connection.end();
   } catch (err) {
