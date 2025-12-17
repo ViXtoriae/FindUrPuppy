@@ -7,7 +7,7 @@
     "size": "moyen",
     "description": "Luna est une chienne croisée Border Collie pleine d'énergie. Elle adore courir et apprendre de nouveaux tours.",
     "image": "dog1.jpg",
-    "refuge": "Refuge de l'Espoir"
+    "refuge_id" :1
   },
   {
     "name": "Simba",
@@ -17,7 +17,7 @@
     "size": "petit",
     "description": "Simba est un magnifique chat roux, calme et très câlin. C'est le roi du canapé qui cherche des genoux pour la sieste.",
     "image": "cat1.jpg",
-    "refuge": "Refuge de l'Espoir"
+    "refuge_id" :1
   },
   {
     "name": "Rocky",
@@ -27,7 +27,7 @@
     "size": "grand",
     "dedescription": "Rocky est un Berger Allemand loyal et protecteur. Il a besoin d'un maître expérimenté pour parfaire son éducation.",
     "image": "dog2.jpg",
-    "refuge": "Refuge de l'Espoir"
+    "refuge_id" :1
   },
   {
     "name": "Nala",
@@ -37,7 +37,7 @@
     "size": "petit",
     "description": "Petite chatte curieuse et joueuse. Nala adore chasser les plumeaux et grimper sur son arbre à chat.",
     "image": "cat2.jpg",
-    "refuge": "Refuge de l'Espoir"
+    "refuge_id" :1
   },
   {
     "name": "Max",
@@ -47,7 +47,7 @@
     "size": "petit",
     "description": "Max est un petit Jack Russell sénior qui cherche une retraite paisible. Juste de petites balades et beaucoup d'amour.",
     "image": "dog3.jpg",
-    "refuge": "Refuge de l'Espoir"
+    "refuge_id" :1
   },
   {
     "name": "Bella",
