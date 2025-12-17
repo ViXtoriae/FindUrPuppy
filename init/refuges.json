@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Refuge de l'Espoir",
+    "city": "Paris",
+    "address": "12 rue des Lilas, 75012 Paris",
+    "phone": "0102030405",
+    "image": "refuge-1.jpg"
+  },
+  {
+    "name": "SPA Paris",
+    "city": "Paris",
+    "address": "45 avenue de la République, 75011 Paris",
+    "phone": "0140000202",
+    "image": "refuge-2.jpg"
+  },
+  {
+    "name": "Animaux Secours",
+    "city": "Lyon",
+    "address": "78 boulevard des Alpes, 69008 Lyon",
+    "phone": "0491000303",
+    "image": "refuge-3.jpg"
+  }
+]

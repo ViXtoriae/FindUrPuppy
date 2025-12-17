@@ -29,7 +29,11 @@
     <a href="login.html" style="background:var(--secondary-color); color:white;">Login</a>
   </div>
 </nav>
-    
+
+
+<!-- =============================
+     HEAD
+============================= -->
   <section class="page-header">
     <h1>Nos refuges partenaires</h1>
   </section>
@@ -37,14 +41,18 @@
   <!-- Liste des refuges -->
   <section id="refugeList" class="card-grid"></section>
 
-  <!-- Modal pour détails refuge -->
-  <div id="refugeModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
+  <!-- Modal refuge -->
+<div id="refugeModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div id="refugeImage"></div>
+    <div>
       <div id="refugeDetails"></div>
       <div id="refugeAnimals"></div>
     </div>
   </div>
+</div>
+
 
 
  <!-- =============================

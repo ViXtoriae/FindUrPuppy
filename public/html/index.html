@@ -51,7 +51,7 @@
     <div class="header__content">
       <h4>Bienvenue sur</h4>
       <h1>Adopte<br><span>Un Ami</span></h1>
-      <h2>Votre futur compagnon vous attend 🐾</h2>
+      <h2>Votre futur compagnon vous attend !</h2>
 
       <p>
         Découvrez chiens et chats à adopter partout en France,
@@ -74,11 +74,9 @@
 <!-- =============================
      RECHERCHE
 ============================= -->
-<section id="search" class="section__container">
+<section id="search" class="section__container search-box">
   <h2 class="section__header">Trouvez votre compagnon</h2>
 
-  <div class="filter-card">
-    <section class="filter-card">
   <div class="filter-grid">
     <input type="text" id="searchInput" placeholder="Recherche...">
 
@@ -95,18 +93,49 @@
     </select>
   
     <select id="filterRefuge">
-      <option value="">Refuges</option>
-      <option value="petit">Refuge1</option>
-      <option value="moyen">refuge2</option>
-      <option value="moyen">refuge3</option>
+      <option value="">Tous les refuges</option>
+      <option value="Refuge de l'Espoir">Refuge de l'Espoir</option>
+      <option value="SPA Paris">SPA Paris</option>
+      <option value="Animaux Secours">Animaux Secours</option>
     </select>
 
-    <button id="filter-btn" onclick="goToAnimals()">Filtrer</button>
-      
 
-    </div>
+    <button id="filter-btn" onclick="goToAnimals()">Filtrer</button>
   </div>
 </section>
+
+
+
+<!-- script linked à animal.html -->
+<script>
+  function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+  }
+
+  function handleContact(e) {
+    e.preventDefault();
+    alert("Merci pour votre message :)");
+    e.target.reset();
+  }
+
+  function goToAnimals() {
+    const search = document.getElementById("searchInput").value;
+    const type = document.getElementById("filterType").value;
+    const sex = document.getElementById("filterSex").value;
+    const refuge = document.getElementById("filterRefuge").value;
+
+
+    const params = new URLSearchParams();
+    if (search) params.append("search", search);
+    if (type) params.append("type", type);
+    if (sex) params.append("sex", sex);
+    if (refuge) params.append("refuge", refuge);
+
+
+    window.location.href = `animal.html?${params.toString()}`;
+  }
+</script>
+
 
 <!-- =============================
      REFUGES
@@ -115,45 +144,83 @@
   <h2 class="section__header">Nos Refuges</h2>
 
   <div class="carousel">
-
-    <div class="arrowbtn arrowbtn-left"></div>
-    <div class="arrowbtn arrowbtn-right"></div>
-
-    <div class="carousel__track">
-
-      <div class="carousel__card">
-        <img src="../assets/refuge-1.jpg" alt="Refuge">
-        <h4>Refuge de l'Espoir</h4>
-        <a href="#">Voir</a>
-      </div>
-
-      <div class="carousel__card">
-        <img src="../assets/refuge-2.jpg" alt="Refuge">
-        <h4>SPA Paris</h4>
-        <a href="#">Voir</a>
-      </div>
-
-      <div class="carousel__card">
-        <img src="../assets/refuge-3.jpg" alt="Refuge">
-        <h4>Animaux Secours</h4>
-        <a href="#">Voir</a>
-      </div>
-
-      <div class="carousel__card">
-        <img src="../assets/refuge-4.jpg" alt="Refuge">
-        <h4>Coeur de Chien</h4>
-        <a href="#">Voir</a>
-      </div>
-
-    </div>
+    <button class="arrowbtn arrowbtn-left" id="prevBtn">&#10094;</button>
+    <div class="carousel__track" id="refugeCarousel"></div>
+    <button class="arrowbtn arrowbtn-right" id="nextBtn">&#10095;</button>
   </div>
 </section>
+
+
+<!-- script linked à refuge.html -->
+<script>
+async function loadRefugesCarousel() {
+  try {
+    const response = await fetch("http://localhost:3000/api/refuges");
+    const refuges = await response.json();
+
+    const track = document.getElementById("refugeCarousel");
+    track.innerHTML = "";
+
+    // Part refuge cards
+    refuges.forEach(refuge => {
+      const card = document.createElement("div");
+      card.className = "carousel__card";
+      card.innerHTML = `
+        <img src="../assets/${refuge.image}" alt="${refuge.name}">
+        <h4>${refuge.name}</h4>
+        <p>${refuge.city}</p>
+      `;
+      // rendre la carte est cliquable
+      card.addEventListener("click", () => {
+        window.location.href = `refuge.html?id=${refuge.id}`;
+      });
+      track.appendChild(card);
+    });
+
+    // Carte finale
+    const allCard = document.createElement("div");
+    allCard.className = "carousel__card all-refuges";
+    allCard.innerHTML = `
+      <h4>Voir toute la liste</h4>
+      <p>Accédez à tous les refuges</p>
+    `;
+    allCard.addEventListener("click", () => {
+      window.location.href = "refuge.html";
+});
+track.appendChild(allCard);
+
+
+    // Nav fleches
+    let index = 0;
+    const cardWidth = track.querySelector(".carousel__card").offsetWidth + 30;
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      if (index < track.children.length - 1) {
+        index++;
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
+      }
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      if (index > 0) {
+        index--;
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
+      }
+    });
+  } catch (err) {
+    console.error("Erreur chargement refuges :", err);
+  }
+}
+
+window.onload = loadRefugesCarousel;
+</script>
+
 
 <!-- =============================
      SWIPE (TEASER)
 ============================= -->
-<section class="section__container">
-  <h2 class="section__header">Matchmaking ❤️</h2>
+<section class="section__container encadre">
+  <h2 class="section__header">Matchmaking</h2>
 
   <p style="text-align:center; max-width:600px; margin:0 auto 2rem;">
     Essayez notre système de swipe pour matcher avec
@@ -162,11 +229,44 @@
 
   <div style="text-align:center;">
     <button id="filter-btn" onclick="location.href='swipe.html'">
-      Tester le swipe ❤️
+      Tester le swipe
     </button>
   </div>
 </section>
 
+<!-- =============================
+     DON
+============================= -->
+<section id="donations" class="section__container encadre">
+  <h2 class="section__header"> Soutenez nos refuges</h2>
+
+  <p style="text-align:center; max-width:600px; margin:0 auto 2rem;">
+    Vos dons permettent aux refuges de nourrir, soigner et offrir une seconde chance aux animaux abandonnés. 
+    <br> Merci pour votre soutien :)
+  </p>
+
+  <div class="donation-options">
+    <button class="don-btn" onclick="donate('10')">Donner 10 €</button>
+    <button class="don-btn" onclick="donate('20')">Donner 20 €</button>
+    <button class="don-btn" onclick="donate('50')">Donner 50 €</button>
+    <button class="don-btn" onclick="donate('custom')">Montant libre</button>
+  </div>
+</section>
+
+<!-- mini script pour pop-up informatif -->
+<script>
+  function donate(amount) {
+  if (amount === "custom") {
+    const custom = prompt("Entrez le montant que vous souhaitez donner (€) :");
+    if (custom) {
+      alert(`Merci pour votre don de ${custom} €`);
+    }
+  } else {
+    alert(`Merci pour votre don de ${amount} € `);
+  }
+}
+
+</script>
 
 
 <!-- =============================
@@ -237,7 +337,7 @@
 
   function handleContact(e) {
     e.preventDefault();
-    alert("Merci pour votre message 🐾");
+    alert("Merci pour votre message :)");
     e.target.reset();
   }
 </script>

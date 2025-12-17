@@ -176,7 +176,7 @@ img {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-dark);
-  background-color: rgba(255, 255, 255, 0.3); /* Ajusté pour visibilité */
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 5rem;
 }
 
@@ -287,6 +287,80 @@ img {
   margin-bottom: 2rem;
 }
 
+.encadre {
+  position: relative;
+  border: 3px solid var(--primary-color);
+  border-radius: var(--card-radius);
+  padding: 2.5rem 2rem 2rem;
+  margin: 3rem auto;
+  max-width: 800px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  overflow: visible; /* important */
+  z-index: 1;
+}
+
+.encadre::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--white);
+  border: 3px solid var(--primary-color);
+  border-radius: 50%;
+  padding: 6px;
+  width: 60px;
+  height: 60px;
+  background-image: url("../assets/icon.png");
+  background-size: 70%;       /* évite que l’image touche la bordure */
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  z-index: 2;
+}
+
+.search-box {
+  max-width: 1000px; /* plus large que les autres sections */
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border: 3px solid var(--primary-color);
+  border-radius: var(--card-radius);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.search-box .filter-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto; /* desktop */
+  gap: 15px;
+  align-items: center;
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+  .search-box .filter-grid {
+    grid-template-columns: 1fr 1fr; /* 2 colonnes */
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .search-box .filter-grid {
+    grid-template-columns: 1fr; /* une seule colonne */
+  }
+
+  .search-box input,
+  .search-box select,
+  .search-box button {
+    width: 100%; /* occupe toute la largeur */
+  }
+}
+
+
+
+
 /* ==============================
    FILTRES
 ============================== */
@@ -294,7 +368,7 @@ img {
   max-width: 900px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: var(--white); /* Modifié pour contraste */
+  background-color: var(--white); 
   border: 2px solid var(--primary-color);
   border-radius: var(--card-radius);
   text-align: center;
@@ -315,13 +389,23 @@ img {
 }
 
 #filter-btn {
-  padding: 0.5rem 2rem;
+  background: var(--primary-color);
+  color: var(--white);
   border: none;
-  background-color: var(--secondary-color);
-  color: white;
+  padding: 18px 40px; /* plus grand */
+  font-size: 1.3rem;  /* texte plus gros */
+  font-weight: bold;
   border-radius: var(--btn-radius);
   cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
 }
+
+#filter-btn:hover {
+  transform: scale(1.08); /* zoom au survol */
+  background: var(--secondary-color);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
 
 .search-bar {
   display: flex;
@@ -373,41 +457,83 @@ img {
 .carousel {
   position: relative;
   overflow: hidden;
-  padding: 2rem 0;
+  padding: 20px;
 }
 
 .carousel__track {
   display: flex;
-  gap: 1rem;
-  transition: transform 0.3s ease-in-out;
+  gap: 10px;
+  transition: transform 0.5s ease-in-out;
 }
 
 .carousel__card {
-  flex: 0 0 calc(33.333% - 1rem);
-  background: var(--secondary-color);
+  flex: 0 0 30%;
+  margin: 0 15px;
+  background: #fff;
   border-radius: var(--card-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   text-align: center;
-  padding: 1rem;
-  color: white;
-  transition: transform 0.3s;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.carousel__card:hover {
+  transform: scale(1.05);
 }
 
 .carousel__card img {
-  max-width: 100%;
-  border-radius: var(--card-radius);
-  margin-bottom: 1rem;
-  height: 150px;
+  width: 100%;
+  height: 180px;
   object-fit: cover;
-  background: white;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
 .carousel__card h4 {
-  margin-bottom: 0.5rem;
   font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: var(--primary-color);
 }
+
+.carousel__card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.carousel__card.all-refuges {
+  background: var(--secondary-color);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: var(--card-radius);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  min-height: 220px; /* pour garder une taille homogène */
+}
+
+.carousel__card.all-refuges:hover {
+  transform: scale(1.05);
+}
+
+.carousel__card.all-refuges h4 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel__card.all-refuges p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+
 
 /* Boutons flèches (Correction syntaxe SCSS vers CSS) */
 .arrowbtn {
@@ -463,6 +589,36 @@ img {
 .carousel__card a:hover {
   background-color: var(--white);
   color: var(--secondary-color);
+}
+
+
+
+/* ==============================
+   SECTION DON
+============================== */
+
+.donation-options {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.don-btn {
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--btn-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.don-btn:hover {
+  transform: scale(1.05);
+  background: var(--secondary-color);
 }
 
 /* ==============================
@@ -653,7 +809,7 @@ h1 {
 }
 
 
-/* Popup */
+/* Pop-up */
 .modal {
   display: none; 
   position: fixed;
@@ -906,6 +1062,71 @@ h1 {
 #refugeAnimals p {
   text-indent: 20px; /* alinéa de 20px */
 }
+
+/* Grille des refuges : une seule carte par ligne */
+#refugeList.card-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 2rem; 
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Modal refuge */
+#refugeModal .modal-content {
+  display: flex;
+  flex-direction: row;       /* image à gauche, texte à droite */
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 65%;                /* assez large */
+  max-width: 1200px;         /* limite sur grands écrans */
+  min-height: 70vh;          
+  padding: 2rem;
+  border-radius: var(--card-radius);
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  position: relative;
+}
+
+/* Croix de fermeture */
+#refugeModal .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #eee;
+  border-radius: 10px;       /* carré arrondi */
+  padding: 6px 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#refugeModal .close:hover {
+  background: var(--secondary-color);
+  color: #fff;
+}
+
+/* Image à gauche */
+#refugeImage {
+  flex: 1;
+  max-width: 50%;            /* occupe presque la moitié */
+  margin-right: 2rem;
+  display: flex;
+  align-items: stretch;
+}
+
+#refugeImage img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--card-radius);
+  object-fit: cover;
+}
+
+/* Texte à droite */
+#refugeDetails, #refugeAnimals {
+  flex: 3;
+}
+
 
 
 
