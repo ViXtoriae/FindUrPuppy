@@ -1,152 +1,413 @@
+
+[
 [
   {
-    "name": "Luna",
-    "type": "chien",
-    "age": 2,
-    "sex": "femelle",
-    "size": "moyen",
-    "description": "Luna est une chienne croisée Border Collie pleine d'énergie. Elle adore courir et apprendre de nouveaux tours.",
-    "image": "dog1.jpg",
-    "refuge_id": 1
-  },
-  {
-    "name": "Simba",
-    "type": "chat",
-    "age": 5,
-    "sex": "male",
-    "size": "petit",
-    "description": "Simba est un magnifique chat roux, calme et très câlin. C'est le roi du canapé qui cherche des genoux pour la sieste.",
-    "image": "cat1.jpg",
-    "refuge_id":1
-  },
-  {
-    "name": "Rocky",
-    "type": "chien",
-    "age": 6,
-    "sex": "male",
-    "size": "grand",
-    "dedescription": "Rocky est un Berger Allemand loyal et protecteur. Il a besoin d'un maître expérimenté pour parfaire son éducation.",
-    "image": "dog2.jpg",
-    "refuge_id": 1
-  },
-  {
-    "name": "Nala",
-    "type": "chat",
-    "age": 1,
-    "sex": "femelle",
-    "size": "petit",
-    "description": "Petite chatte curieuse et joueuse. Nala adore chasser les plumeaux et grimper sur son arbre à chat.",
-    "image": "cat2.jpg",
-    "refuge_id": 1
-  },
-  {
-    "name": "Max",
-    "type": "chien",
-    "age": 12,
-    "sex": "male",
-    "size": "petit",
-    "description": "Max est un petit Jack Russell sénior qui cherche une retraite paisible. Juste de petites balades et beaucoup d'amour.",
-    "image": "dog3.jpg",
-    "refuge_id": 1
-  },
-  {
-    "name": "Bella",
-    "type": "chien",
-    "age": 4,
-    "sex": "femelle",
-    "size": "moyen",
-    "description": "Bella est une chienne très douce, un peu timide au premier abord. Elle a besoin de douceur et de patience.",
-    "image": "dog4.jpg",
-    "refuge_id": 2
-  },
-  {
-    "name": "Oreo",
-    "type": "chat",
-    "age": 1,
-    "sex": "male",
-    "size": "petit",
-    "description": "Chat noir et blanc très rigolo. Oreo est un vrai clown qui vous fera rire toute la journée. Très sociable.",
-    "image": "cat3.jpg",
-    "refuge_id": 2
-  },
-  {
-    "name": "Thor",
-    "type": "chien",
-    "age": 2,
-    "sex": "male",
-    "size": "grand",
-    "description": "Magnifique Husky aux yeux bleus. Thor est très bavard et a besoin de beaucoup d'exercice physique.",
-    "image": "dog5.jpg",
-    "refuge_id": 2
-  },
-  {
-    "name": "Misty",
-    "type": "chat",
-    "age": 13,
-    "sex": "femelle",
-    "size": "petit",
-    "description": "Misty est une dame élégante et indépendante. Elle apprécie sa tranquillité. Idéale pour personne seule.",
-    "image": "cat4.jpg",
-    "refuge_id": 2
-  },
-  {
-    "name": "Charlie",
-    "type": "chien",
-    "age": 5,
-    "sex": "male",
-    "size": "petit",
-    "description": "Charlie est un cocker joyeux et gourmand. Il adore renifler partout lors des promenades.",
-    "image": "dog6.jpg",
-    "refuge_id": 2
-  },
-  {
-    "name": "Daisy",
-    "type": "chien",
-    "age": 11,
-    "sex": "femelle",
-    "size": "grand",
-    "description": "Une Golden Retriever au cœur d'or. Malgré son âge, Daisy garde une âme de chiot. Elle aime tout le monde.",
-    "image": "dog7.jpg",
-    "refuge_id": 3
-  },
-  {
-    "name": "Loki",
-    "type": "chat",
-    "age": 1,
-    "sex": "male",
-    "size": "petit",
-    "description": "Loki porte bien son nom, c'est un petit diablotin adorable. Il a besoin de beaucoup de jeux pour ne pas s'ennuyer.",
-    "image": "cat5.jpg",
-    "refuge_id": 3
-  },
-  {
-    "name": "Rex",
-    "type": "chien",
-    "age": 5,
-    "sex": "male",
-    "size": "moyen",
-    "description": "Rex est un bâtard au look atypique et au grand cœur. Un chien de maison exemplaire, propre et sage.",
-    "image": "dog8.jpg",
-    "refuge_id": 3
-  },
-  {
-    "name": "Coco",
-    "type": "chat",
-    "age": 8,
-    "sex": "femelle",
-    "size": "petit",
-    "description": "Coco est une chatte écaille de tortue très bavarde. Elle vous racontera sa journée dès que vous rentrerez.",
-    "image": "cat6.jpg",
-    "refuge_id": 3
-  },
-  {
-    "name": "Lucky",
+    "name": "Skye",
     "type": "chien",
     "age": 3,
-    "sex": "male",
+    "sex": "femelle",
     "size": "moyen",
-    "description": "Lucky est un chien rescapé qui a peur des gestes brusques mais qui donne un amour infini une fois rassuré.",
-    "image": "dog9.jpg",
-    "refuge_id": 3
-  }
+    "description": "Skye est une Border Collie vive et intelligente. Elle adore les grands espaces et les jeux d'agilité.",
+    "image": "dog1.jpg",
+    "refuge": "Refuge de l'Espoir"
+  },
+  {
+    "name": "Milo",
+    "type": "chien",
+    "age": 1,
+    "sex": "mâle",
+    "size": "petit",
+    "description": "Milo est un jeune chiot au pelage blanc et aux oreilles tachetées de brun. Curieux et joueur, il adore explorer son environnement et faire de nouvelles rencontres.",
+    "image": "dog2.jpg",
+    "refuge": "Refuge de l'Espoir"
+  },
+  {
+  "name": "Oscar",
+  "type": "chien",
+  "age": 4,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Oscar est un teckel au regard expressif et au pelage noir brillant. Il aime se prélasser au soleil et observer son environnement avec curiosité.",
+  "image": "dog3.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Bella",
+  "type": "chien",
+  "age": 2,
+  "sex": "femelle",
+  "size": "moyen",
+  "description": "Bella est une adorable Labrador au pelage crème et au regard espiègle. Elle déborde d'énergie et adore jouer en plein air.",
+  "image": "dog4.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Néo",
+  "type": "chien",
+  "age": 1,
+  "sex": "mâle",
+  "size": "grand",
+  "description": "Néo est un chiot plein de vie au pelage épais et doux. Il adore jouer avec son frisbee et se rouler dans l'herbe.",
+  "image": "dog5.jpeg",
+  "refuge": "Refuge de l'Espoir"
+},
+
+{
+  "name": "Zorro",
+  "type": "chien",
+  "age": 5,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Zorro est un chien au style inimitable, probablement un Chinese Crested. Calme et attentif, il attire tous les regards avec sa crinière originale.",
+  "image": "dog6.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Sunny",
+  "type": "chien",
+  "age": 4,
+  "sex": "mâle",
+  "size": "grand",
+  "description": "Sunny est un Golden Retriever joyeux et sociable. Il adore courir sur la plage et se baigner.",
+  "image": "dog7.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Snow",
+  "type": "chien",
+  "age": 0.6,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Snow est un chiot tout doux au pelage blanc et aux yeux attendrissants. Il aime se poser tranquillement et observer le monde autour de lui.",
+  "image": "dog8.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Bruno",
+  "type": "chien",
+  "age": 1,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Bruno est un Bulldog anglais au corps trapu et au visage plissé. Doux et calme, il aime se promener dans le jardin et recevoir des câlins.",
+  "image": "dog9.png",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Ice",
+  "type": "chien",
+  "age": 3,
+  "sex": "mâle",
+  "size": "grand",
+  "description": "Ice est un Husky aux yeux bleus perçants et au pelage noir et blanc. Énergique et loyal, il aime les longues balades en pleine nature.",
+  "image": "dog10.jpeg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Rocky",
+  "type": "chien",
+  "age": 2,
+  "sex": "mâle",
+  "size": "grand",
+  "description": "Rocky est un Boxer musclé au regard attentif. Il aime se détendre en plein air et rester proche de ses humains.",
+  "image": "dog11.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Saphir",
+  "type": "chien",
+  "age": 6,
+  "sex": "femelle",
+  "size": "grand",
+  "description": "Saphir est une Afghan Hound gracieuse au pelage soyeux. Elle aime se promener dans les bois avec élégance et tranquillité.",
+  "image": "dog12.png",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Pixie",
+  "type": "chien",
+  "age": 2,
+  "sex": "femelle",
+  "size": "petit",
+  "description": "Pixie est une Pomeranian vive et curieuse, au pelage duveteux et au regard malicieux. Elle adore explorer les coins de nature.",
+  "image": "dog13.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Charly",
+  "type": "chien",
+  "age": 5,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Charly est un Cavalier King Charles affectueux au regard doux et aux longues oreilles ondulées. Il aime les balades tranquilles et les câlins.",
+  "image": "dog14.jpeg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Flash",
+  "type": "chien",
+  "age": 2,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Flash est un Border Collie dynamique au pelage tacheté et aux yeux bleus éclatants. Il adore courir dans les champs au coucher du soleil.",
+  "image": "doc15.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Rio",
+  "type": "chien",
+  "age": 3,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Rio est un chien curieux au pelage blanc tacheté. Il aime explorer les rives et observer les reflets sur l’eau.",
+  "image": "dog16.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Tango",
+  "type": "chien",
+  "age": 4,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Tango est un Brittany Spaniel vif et intelligent, toujours prêt à explorer les grands espaces. Son regard attentif révèle sa nature curieuse et affectueuse.",
+  "image": "dog17.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Mop",
+  "type": "chien",
+  "age": 5,
+  "sex": "mâle",
+  "size": "grand",
+  "description": "Mop est un Komondor majestueux au pelage cordé unique. Calme et protecteur, il veille sur son environnement avec sagesse.",
+  "image": "dog18.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Frosty",
+  "type": "chien",
+  "age": 3,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Frosty est un Jack Russell vif et curieux, au pelage blanc marqué et au regard éveillé. Il adore les balades hivernales et les jeux dans la neige.",
+  "image": "dog19.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Luna",
+  "type": "chien",
+  "age": 4,
+  "sex": "femelle",
+  "size": "moyen",
+  "description": "Luna est une Poodle joyeuse au pelage bouclé et au sourire radieux. Elle aime se prélasser au soleil et partager des moments doux.",
+  "image": "dog20.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Whiskers",
+  "type": "chat",
+  "age": 2,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Whiskers est un chat tigré curieux et attentif, au pelage rayé et au regard perçant. Il aime explorer les champs et observer les mouvements autour de lui.",
+  "image": "cat1.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Milo",
+  "type": "chat",
+  "age": 3,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Milo est un chat tigré aux yeux verts captivants et aux moustaches élégantes. Calme et observateur, il aime les moments paisibles et les caresses douces.",
+  "image": "cat2.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Sunny",
+  "type": "chat",
+  "age": 2,
+  "sex": "femelle",
+  "size": "petit",
+  "description": "Sunny est une chatte douce  de race Bobtail Japonais, au pelage blanc marqué d’orange et aux yeux bleus lumineux. Elle aime les environnements calmes et les caresses délicates.",
+  "image": "cat3.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Calypso",
+  "type": "chat",
+  "age": 4,
+  "sex": "femelle",
+  "size": "moyen",
+  "description": "Calypso est une chatte tricolore au regard intense et à la posture fière. Elle aime observer son entourage avec calme et assurance.",
+  "image": "cat4.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Velours",
+  "type": "chat",
+  "age": 2,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Velours est un Cornish Rex au pelage ondulé et aux grandes oreilles. Agile et curieux, il aime explorer les jardins avec vivacité.",
+  "image": "cat5.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Zéphyr",
+  "type": "chat",
+  "age": 3,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Zéphyr est un Egyptian Mau élégant au pelage argenté tacheté et aux yeux dorés perçants. Agile et attentif, il aime se prélasser sur les rochers et observer son environnement.",
+  "image": "cat6.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Nectar",
+  "type": "chat",
+  "age": 3,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Nectar est un chat au pelage crème et aux marques orangées délicates. Il charme par ses yeux bleus et sa voix douce.",
+  "image": "cat7.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Sahara",
+  "type": "chat",
+  "age": 4,
+  "sex": "femelle",
+  "size": "moyen",
+  "description": "Sahara est une Somali gracieuse au pelage roux et à la queue de renard. Vive et élégante, elle attire tous les regards par sa prestance naturelle.",
+  "image": "cat8.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Mocha",
+  "type": "chat",
+  "age": 4,
+  "sex": "femelle",
+  "size": "moyen",
+  "description": "Mocha est une chatte au pelage soyeux et aux yeux bleus profonds. Elle aime se poser dans les jardins fleuris et observer le monde avec douceur.",
+  "image": "cat9.jpeg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Graphite",
+  "type": "chat",
+  "age": 5,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Graphite est un chat paisible au pelage gris soyeux et au regard vert perçant. Il aime se détendre sur les surfaces en bois et observer tranquillement son environnement.",
+  "image": "cat10.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Pixel",
+  "type": "chat",
+  "age": 2,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Pixel est un Singapura vif et affectueux, au pelage beige satiné et aux grands yeux verts. Il adore les câlins et les coins douillets.",
+  "image": "cat11.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Tao",
+  "type": "chat",
+  "age": 3,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Tao est un Ocicat au pelage doré tacheté et à l’allure féline. Curieux et vif, il aime explorer son territoire avec assurance.",
+  "image": "cat12.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Opale",
+  "type": "chat",
+  "age": 2,
+  "sex": "femelle",
+  "size": "moyen",
+  "description": "Opale est une chatte gracieuse au pelage crème et aux yeux bleus lumineux. Curieuse et vive, elle aime observer le monde avec délicatesse.",
+  "image": "cat13.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Lune",
+  "type": "chat",
+  "age": 3,
+  "sex": "femelle",
+  "size": "moyen",
+  "description": "Lune est une chatte Turc de Van au pelage immaculé et aux yeux fascinants, l’un doré, l’autre bleu. Elle aime se prélasser à l’extérieur, entre pierre et verdure.",
+  "image": "cat14.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Brume",
+  "type": "chat",
+  "age": 4,
+  "sex": "femelle",
+  "size": "moyen",
+  "description": "Brume est une British Longhair majestueuse au pelage gris clair et aux yeux ambrés. Elle aime les coins fleuris et les instants paisibles en plein air.",
+  "image": "cat15.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Cacao",
+  "type": "chat",
+  "age": 3,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Cacao est un Havana Brown élégant au pelage chocolat et aux yeux verts profonds. Il aime les ambiances feutrées et les moments de calme.",
+  "image": "cat16.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Mistral",
+  "type": "chat",
+  "age": 2,
+  "sex": "femelle",
+  "size": "petit",
+  "description": "Mistral est une Selkirk Rex au pelage ondulé et aux yeux verts expressifs. Elle aime les ambiances feutrées et les poses pleines de grâce.",
+  "image": "cat17.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Sésame",
+  "type": "chat",
+  "age": 3,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Sésame est un Burmese au pelage brun chaud et aux yeux verts captivants. Il aime les coins douillets et les instants de calme.",
+  "image": "cat18.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Indigo",
+  "type": "chat",
+  "age": 3,
+  "sex": "mâle",
+  "size": "moyen",
+  "description": "Indigo est un Siamois au pelage crème et aux extrémités brun foncé. Ses yeux bleus profonds et son allure élégante en font un compagnon fascinant.",
+  "image": "cat19.jpg",
+  "refuge": "Refuge de l'Espoir"
+},
+{
+  "name": "Mango",
+  "type": "chat",
+  "age": 1,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Mango est un chaton tigré orange au regard vert tendre. Ce petit Européen adore explorer les jardins ensoleillés et se blottir dans les feuillages.",
+  "image": "cat20.jpg",
+  "refuge": "Refuge de l'Espoir"
+}
+
+
+
+
+
+
+
+
 ]
