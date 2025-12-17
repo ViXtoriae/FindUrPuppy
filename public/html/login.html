@@ -5,6 +5,7 @@
   <title>Connexion - AdopteUnAmi</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
   <link rel="stylesheet" href="../styles.css">
+
   <style>
     .auth-body {
       display: flex;
@@ -93,23 +94,24 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+
+  <!-- SDK EmailJS version 3 -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("vkxGXDoMMPWsLZTp-"); // ta Public Key
+    })();
+  </script>
 </head>
 
-<!-- SDK EmailJS version 3 -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("vkxGXDoMMPWsLZTp-"); // ta Public Key
-  })();
-</script>
-<!-- =============================
-     NAVBAR
-============================= -->
+<body class="auth-body">
+
 <nav class="navbar">
   <div class="nav-left">
     <div class="nav-logo">
       <a href="index.html" class="logo-link">
-  <img src="../assets/icon.png" class="emoji-icon"> AdopteUnAmi</a>
+        <img src="../assets/icon.png" class="emoji-icon"> AdopteUnAmi
+      </a>
     </div>
   </div>
 
@@ -122,32 +124,44 @@
     <a href="refuge.html">Refuges</a>
     <a href="swipe.html">Swipe</a>
     <a href="likes.html">Likes</a>
-    <a href="login.html" style="background:var(--secondary-color); color:white;">Login</a>
+    <a href="login.html" id="login-link" style="background:var(--secondary-color); color:white;">Login</a>
+    <a href="#" id="logout-btn" style="display:none;">Déconnexion</a>
   </div>
 </nav>
-<body class="auth-body">
 
-  <div class="auth-container">
-    <div class="auth-card">
-      <h2><i class="ri-user-heart-line"></i> Connexion</h2>
-      <form id="login-form">
-        <div class="form-group">
-          <label for="email"><i class="ri-mail-line"></i> Email</label>
-          <input type="email" id="email" placeholder="Votre email" required>
-        </div>
-        <div class="form-group">
-          <label for="password"><i class="ri-lock-line"></i> Mot de passe</label>
-          <input type="password" id="password" placeholder="Votre mot de passe" required>
-        </div>
-        <button type="submit" class="btn-primary">Se connecter</button>
-        <p id="error-message" class="error-msg">Identifiants incorrects</p>
-        <p class="switch-auth">Pas encore inscrit ? <a href="register.html">Créer un compte</a></p>
-        <p class="forgot-password"><a href="#" id="forgot-link">Mot de passe oublié ?</a></p>
-      </form>
-    </div>
+<div class="auth-container">
+  <div class="auth-card">
+    <h2><i class="ri-user-heart-line"></i> Connexion</h2>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label for="email"><i class="ri-mail-line"></i> Email</label>
+        <input type="email" id="email" placeholder="Votre email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password"><i class="ri-lock-line"></i> Mot de passe</label>
+        <input type="password" id="password" placeholder="Votre mot de passe" required>
+      </div>
+
+      <button type="submit" class="btn-primary">Se connecter</button>
+      <p id="error-message" class="error-msg">Identifiants incorrects</p>
+
+      <p class="switch-auth">
+        Pas encore inscrit ? <a href="register.html">Créer un compte</a>
+      </p>
+
+      <p class="forgot-password">
+        <a href="#" id="forgot-link">Mot de passe oublié ?</a>
+      </p>
+    </form>
   </div>
+</div>
+
+<script src="../js/login.js"></script>
 
 <script>
+  // EmailJS pour mot de passe oublié
   document.getElementById("forgot-link").addEventListener("click", function(e) {
     e.preventDefault();
     const email = document.getElementById("email").value.trim();
@@ -157,40 +171,31 @@
       return;
     }
 
-    // linked au template EmailJS
-    const templateParams = {
-      to_email: email
-    };
+    const templateParams = { to_email: email };
 
     emailjs.send("service_yxvf2ib", "template_296qy0z", templateParams)
       .then(function(response) {
          alert("Un email de réinitialisation a été envoyé à " + email);
-         console.log("SUCCESS!", response.status, response.text);
       }, function(error) {
          alert("Erreur lors de l’envoi de l’email.");
-         console.log("FAILED...", error);
       });
   });
 </script>
+
 <!-- =============================
      FOOTER
 ============================= -->
 <footer class="site-footer">
   <div class="footer-container">
 
-    <!-- Colonne 1 : Logo -->
     <div class="footer-col">
       <h4 class="logo">
-      <img src="../assets/icon.png" class="emoji-icon" alt="logo">
-      AdopteUnAmi
-    </h4>
-      <p>
-        Plateforme de mise en relation entre refuges
-        et futurs adoptants en France.
-      </p>
+        <img src="../assets/icon.png" class="emoji-icon" alt="logo">
+        AdopteUnAmi
+      </h4>
+      <p>Plateforme de mise en relation entre refuges et futurs adoptants en France.</p>
     </div>
 
-    <!-- Colonne 2 : Navigation -->
     <div class="footer-col">
       <h4>Navigation</h4>
       <ul>
@@ -201,7 +206,6 @@
       </ul>
     </div>
 
-    <!-- Colonne 3 : Informations -->
     <div class="footer-col">
       <h4>Informations</h4>
       <ul>
@@ -212,7 +216,6 @@
       </ul>
     </div>
 
-    <!-- Colonne 4 : Réseaux -->
     <div class="footer-col">
       <h4>Suivez-nous</h4>
       <div class="footer-socials">
@@ -228,7 +231,6 @@
     © 2025 AdoptMe — Projet pédagogique • Tous droits réservés
   </div>
 </footer>
-
 
 </body>
 </html>
