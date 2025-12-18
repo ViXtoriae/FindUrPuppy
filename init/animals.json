@@ -400,5 +400,15 @@
   "description": "Mango est un chaton tigré orange au regard vert tendre. Ce petit Européen adore explorer les jardins ensoleillés et se blottir dans les feuillages.",
   "image": "cat20.jpg",
   "refuge_id" :1
+},
+{
+  "name": "Titi",
+  "type": "autre",
+  "age": 6,
+  "sex": "mâle",
+  "size": "petit",
+  "description": "Titi vient tout juste de perdre son ancien propriétaire. C'est notre arrivant le plus récent et le plus coloré!",
+  "image": "autre1.jpg",
+  "refuge_id" :1
 }
 ]

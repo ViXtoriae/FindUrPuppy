@@ -136,24 +136,32 @@
       box-shadow: 0 0 20px rgba(250,204,21,0.7);
     }
 
-    /* Message de feedback */
-    .form-message {
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      display: none;
-    }
-    .form-message.success {
-      background: rgba(34,197,94,0.2);
-      color: #22c55e;
-      display: block;
-    }
-    .form-message.error {
-      background: rgba(239,68,68,0.2);
-      color: #ef4444;
-      display: block;
-    }
+
+  /* Message de feedback */
+.form-message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  display: none;
+}
+
+.form-message.success {
+  background: rgba(34,197,94,0.85); /* vert plus opaque */
+  color: #fff;                      /* texte blanc bien lisible */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: block;
+}
+
+.form-message.error {
+  background: rgba(239,68,68,0.85); /* rouge plus opaque */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: block;
+}
+
 
     /* ==============================
        FOOTER
@@ -362,7 +370,7 @@
     // Simulation délai serveur
     setTimeout(() => {
       messageBox.className = "form-message success";
-      messageBox.textContent = "✅ Votre message a bien été envoyé ! Merci de nous avoir contactés.";
+      messageBox.textContent = "Votre message a bien été envoyé ! Merci de nous avoir contacté! :D ";
 
       button.innerHTML = '<i class="ri-check-line"></i> Message envoyé';
 

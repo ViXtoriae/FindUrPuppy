@@ -82,6 +82,40 @@ app.get("/api/refuges/:id/animals", async (req, res) => {
   }
 });
 
+// Add animal
+app.post("/api/animals", async (req, res) => {
+  const { name, type, age, sex, size, description, image, refuge_id } = req.body;
+
+  // Verif champs
+  if (!name || !type || !age || !sex || !size || !description || !image || !refuge_id) {
+    return res.status(400).json({ error: "Tous les champs sont requis" });
+  }
+
+  try {
+    const [result] = await db.query(
+      `INSERT INTO animals (name, type, age, sex, size, description, image, refuge_id)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [name, type, age, sex, size, description, image, refuge_id]
+    );
+
+    // Retourne l’animal créé avec son ID
+    res.status(201).json({
+      id: result.insertId,
+      name,
+      type,
+      age,
+      sex,
+      size,
+      description,
+      image,
+      refuge_id
+    });
+  } catch (err) {
+    console.error("Erreur POST /api/animals :", err);
+    res.status(500).json({ error: "Erreur serveur" });
+  }
+});
+
 
 // 5 animaux aléatoires avec infos refuge
 app.get("/api/animals/random", async (req, res) => {

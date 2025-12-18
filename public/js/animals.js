@@ -10,7 +10,9 @@ function toggleMenu() {
 async function loadAnimals() {
   try {
     const response = await fetch("http://localhost:3000/api/animals");
-    const animals = await response.json();
+    let animals = await response.json();
+
+    animals = animals.sort(() => Math.random() - 0.5);
 
     const container = document.getElementById("animalList");
     container.innerHTML = "";
