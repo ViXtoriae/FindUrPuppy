@@ -305,5 +305,16 @@
   </div>
 </footer>
 
+
+<script>
+  // Protection d'accès : likes.html
+  const session = localStorage.getItem("session");
+
+  if (!session) {
+    alert("Vous devez être connecté pour accéder à cette page.");
+    window.location.href = "login.html";
+  }
+</script>
+
 </body>
 </html>
