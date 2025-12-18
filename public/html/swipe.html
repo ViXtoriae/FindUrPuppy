@@ -48,9 +48,7 @@
   <!-- =============================
        CONTAINER SWIPE
   ============================= -->
-  <main class="swipe-container" id="cardContainer">
-    <!-- Les cartes seront injectées ici par swipe.js -->
-  </main>
+  <main class="swipe-container" id="cardContainer"></main>
 
   <!-- Boutons d’action -->
   <div class="buttons-container">
@@ -66,6 +64,22 @@
       <i class="ri-heart-fill"></i>
     </button>
   </div>
+
+  <!-- Modal infos animal -->
+<div id="animalModal" class="modal">
+  <div class="animal-modal-content">
+    <span class="close-btn" onclick="closeAnimalModal()">&times;</span>
+    <div class="animal-modal-left">
+      <img id="modalAnimalImage" class="animal-modal-img" alt="animal">
+    </div>
+    <div class="animal-modal-right">
+      <h2 id="modalAnimalName"></h2>
+      <p id="modalAnimalAge"></p>
+      <p id="modalAnimalDescription"></p>
+    </div>
+  </div>
+</div>
+
 
 <!-- =============================
      FOOTER

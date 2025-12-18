@@ -16,8 +16,9 @@ async function loadSwipeAnimals() {
     container.innerHTML = "";
 
     animals.forEach((animal, index) => {
-      const imageSrc = animal.image && animal.image.trim() !== "" 
-        ? `/assets/${animal.image}` 
+
+      const imageSrc = (animal.image && animal.image.trim() !== "")
+        ? `/assets/${animal.image}`
         : `/assets/placeholder.jpg`;
 
       const card = document.createElement("div");
@@ -25,14 +26,26 @@ async function loadSwipeAnimals() {
       card.style.zIndex = index + 1;
 
       card.innerHTML = `
-        <img src="${imageSrc}" class="card-img" alt="${animal.description}">
-        <div class="card-content">
-          <h3>${animal.name}, ${animal.age} ans</h3>
-          <p>${animal.description}</p>
-        </div>
-      `;
+      <img src="${imageSrc}" class="card-img" alt="${animal.description}"
+          onerror="this.onerror=null; this.src='/assets/placeholder.jpg';">
+      <div class="card-content">
+        <h3>${animal.name}, ${animal.age} ans</h3>
+        <p>${animal.description}</p>
+      </div>
+    `;
+
+      
 
       container.appendChild(card);
+      card.addEventListener("click", () => {
+      document.getElementById("modalAnimalImage").src = imageSrc;
+      document.getElementById("modalAnimalName").textContent = animal.name;
+      document.getElementById("modalAnimalAge").textContent = `${animal.age} ans`;
+      document.getElementById("modalAnimalDescription").textContent = animal.description;
+
+      document.getElementById("animalModal").style.display = "flex";
+    });
+
     });
 
     reorganizeCards();
@@ -40,6 +53,11 @@ async function loadSwipeAnimals() {
     console.error("Erreur chargement animaux swipe:", err);
   }
 }
+
+function closeAnimalModal() {
+  document.getElementById("animalModal").style.display = "none";
+}
+
 
 loadSwipeAnimals();
 
