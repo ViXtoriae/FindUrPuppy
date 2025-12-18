@@ -2,149 +2,127 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FindUrPuppy - Animaux</title>
-
-  <link rel="stylesheet" href="../styles.css">
-</head>
-
-<style> 
-.auth-body {
-  display: flex;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #f6d365, #fda085);
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 100vh;
-}
-
-/* Container */
-.auth-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding-top: 80px;
-}
-
-/* Carte */
-.auth-card {
-  background: #fff;
-  padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-  width: 100%;
-  max-width: 400px;
-  animation: fadeIn 0.6s ease;
-}
-
-.auth-card h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #333;
-}
-
-/* Champs */
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  font-weight: 600;
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #444;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  transition: all 0.3s;
-}
-
-.form-group input:focus {
-  border-color: #fda085;
-  box-shadow: 0 0 6px rgba(253,160,133,0.5);
-  outline: none;
-}
-
-/* Bouton */
-.btn-primary {
-  width: 100%;
-  padding: 0.9rem;
-  background: #fda085;
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.btn-primary:hover {
-  background: #f6d365;
-}
-
-/* Messages */
-.error-msg {
-  color: red;
-  text-align: center;
-  display: none;
-  margin-top: 0.5rem;
-}
-
-.success-msg {
-  color: green;
-  text-align: center;
-  display: none;
-  margin-top: 0.5rem;
-}
-
-/* Switch lien */
-.switch-auth {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.switch-auth a {
-  color: #fda085;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.switch-auth a:hover {
-  text-decoration: underline;
-}
-
-/* Animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-</style>
-
-
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
   <title>Inscription - AdopteUnAmi</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
   <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .auth-body {
+      display: flex;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .auth-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding-top: 80px;
+    }
+
+    .auth-card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .auth-card h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    .form-group label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #444;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #fda085;
+      box-shadow: 0 0 6px rgba(253,160,133,0.5);
+      outline: none;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 0.9rem;
+      background: #fda085;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover { background: #f6d365; }
+
+    .error-msg {
+      color: red;
+      text-align: center;
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .success-msg {
+      color: green;
+      text-align: center;
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .switch-auth {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .switch-auth a {
+      color: #fda085;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .switch-auth a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body class="auth-body">
-  <!-- =============================
-     NAVBAR
-============================= -->
+
 <nav class="navbar">
   <div class="nav-left">
     <div class="nav-logo">
       <a href="index.html" class="logo-link">
-  <img src="../assets/icon.png" class="emoji-icon"> AdopteUnAmi</a>
+        <img src="../assets/icon.png" class="emoji-icon"> AdopteUnAmi
+      </a>
     </div>
   </div>
 
@@ -161,24 +139,31 @@
   </div>
 </nav>
 
-  <div class="auth-container">
-    <div class="auth-card">
-      <h2><i class="ri-user-add-line"></i> Créer un compte</h2>
-      <form id="register-form">
-        <div class="form-group">
-          <label for="reg-email"><i class="ri-mail-line"></i> Email</label>
-          <input type="email" id="reg-email" placeholder="Votre email" required>
-        </div>
-        <div class="form-group">
-          <label for="reg-password"><i class="ri-lock-line"></i> Mot de passe</label>
-          <input type="password" id="reg-password" placeholder="Votre mot de passe" required>
-        </div>
-        <button type="submit" class="btn-primary">S’inscrire</button>
-        <p id="register-message" class="success-msg">Compte créé avec succès 🎉</p>
-        <p class="switch-auth">Déjà inscrit ? <a href="login.html">Se connecter</a></p>
-      </form>
-    </div>
+<div class="auth-container">
+  <div class="auth-card">
+    <h2><i class="ri-user-add-line"></i> Créer un compte</h2>
+
+    <form id="register-form">
+      <div class="form-group">
+        <label for="reg-email"><i class="ri-mail-line"></i> Email</label>
+        <input type="email" id="reg-email" placeholder="Votre email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-password"><i class="ri-lock-line"></i> Mot de passe</label>
+        <input type="password" id="reg-password" placeholder="Votre mot de passe" required>
+      </div>
+
+      <button type="submit" class="btn-primary">S’inscrire</button>
+      <p id="register-message" class="success-msg">Compte créé avec succès 🎉</p>
+
+      <p class="switch-auth">
+        Déjà inscrit ? <a href="login.html">Se connecter</a>
+      </p>
+    </form>
   </div>
+</div>
+
 <script src="../js/register.js"></script>
 
 <!-- =============================
@@ -187,19 +172,14 @@
 <footer class="site-footer">
   <div class="footer-container">
 
-    <!-- Colonne 1 : Logo -->
     <div class="footer-col">
       <h4 class="logo">
-      <img src="../assets/icon.png" class="emoji-icon" alt="logo">
-      AdopteUnAmi
-    </h4>
-      <p>
-        Plateforme de mise en relation entre refuges
-        et futurs adoptants en France.
-      </p>
+        <img src="../assets/icon.png" class="emoji-icon" alt="logo">
+        AdopteUnAmi
+      </h4>
+      <p>Plateforme de mise en relation entre refuges et futurs adoptants en France.</p>
     </div>
 
-    <!-- Colonne 2 : Navigation -->
     <div class="footer-col">
       <h4>Navigation</h4>
       <ul>
@@ -210,7 +190,6 @@
       </ul>
     </div>
 
-    <!-- Colonne 3 : Informations -->
     <div class="footer-col">
       <h4>Informations</h4>
       <ul>
@@ -221,7 +200,6 @@
       </ul>
     </div>
 
-    <!-- Colonne 4 : Réseaux -->
     <div class="footer-col">
       <h4>Suivez-nous</h4>
       <div class="footer-socials">
@@ -240,4 +218,3 @@
 
 </body>
 </html>
-

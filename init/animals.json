@@ -18,7 +18,7 @@
     "size": "petit",
     "description": "Milo est un jeune chiot au pelage blanc et aux oreilles tachetées de brun. Curieux et joueur, il adore explorer son environnement et faire de nouvelles rencontres.",
     "image": "dog2.jpg",
-    "refuge_id" :1
+    "refuge_id" :2
   },
   {
   "name": "Oscar",
@@ -28,7 +28,7 @@
   "size": "petit",
   "description": "Oscar est un teckel au regard expressif et au pelage noir brillant. Il aime se prélasser au soleil et observer son environnement avec curiosité.",
   "image": "dog3.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Bella",
@@ -48,7 +48,7 @@
   "size": "grand",
   "description": "Néo est un chiot plein de vie au pelage épais et doux. Il adore jouer avec son frisbee et se rouler dans l'herbe.",
   "image": "dog5.jpeg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 
 {
@@ -59,7 +59,7 @@
   "size": "petit",
   "description": "Zorro est un chien au style inimitable, probablement un Chinese Crested. Calme et attentif, il attire tous les regards avec sa crinière originale.",
   "image": "dog6.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Sunny",
@@ -79,7 +79,7 @@
   "size": "petit",
   "description": "Snow est un chiot tout doux au pelage blanc et aux yeux attendrissants. Il aime se poser tranquillement et observer le monde autour de lui.",
   "image": "dog8.jpg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Bruno",
@@ -89,7 +89,7 @@
   "size": "moyen",
   "description": "Bruno est un Bulldog anglais au corps trapu et au visage plissé. Doux et calme, il aime se promener dans le jardin et recevoir des câlins.",
   "image": "dog9.png",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Ice",
@@ -109,7 +109,7 @@
   "size": "grand",
   "description": "Rocky est un Boxer musclé au regard attentif. Il aime se détendre en plein air et rester proche de ses humains.",
   "image": "dog11.jpg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Saphir",
@@ -119,7 +119,7 @@
   "size": "grand",
   "description": "Saphir est une Afghan Hound gracieuse au pelage soyeux. Elle aime se promener dans les bois avec élégance et tranquillité.",
   "image": "dog12.png",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Pixie",
@@ -139,7 +139,7 @@
   "size": "petit",
   "description": "Charly est un Cavalier King Charles affectueux au regard doux et aux longues oreilles ondulées. Il aime les balades tranquilles et les câlins.",
   "image": "dog14.jpeg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Flash",
@@ -149,7 +149,7 @@
   "size": "moyen",
   "description": "Flash est un Border Collie dynamique au pelage tacheté et aux yeux bleus éclatants. Il adore courir dans les champs au coucher du soleil.",
   "image": "doc15.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Rio",
@@ -169,7 +169,7 @@
   "size": "moyen",
   "description": "Tango est un Brittany Spaniel vif et intelligent, toujours prêt à explorer les grands espaces. Son regard attentif révèle sa nature curieuse et affectueuse.",
   "image": "dog17.jpg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Mop",
@@ -179,7 +179,7 @@
   "size": "grand",
   "description": "Mop est un Komondor majestueux au pelage cordé unique. Calme et protecteur, il veille sur son environnement avec sagesse.",
   "image": "dog18.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Frosty",
@@ -199,7 +199,7 @@
   "size": "moyen",
   "description": "Luna est une Poodle joyeuse au pelage bouclé et au sourire radieux. Elle aime se prélasser au soleil et partager des moments doux.",
   "image": "dog20.jpg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Whiskers",
@@ -209,7 +209,7 @@
   "size": "moyen",
   "description": "Whiskers est un chat tigré curieux et attentif, au pelage rayé et au regard perçant. Il aime explorer les champs et observer les mouvements autour de lui.",
   "image": "cat1.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Milo",
@@ -229,7 +229,7 @@
   "size": "petit",
   "description": "Sunny est une chatte douce  de race Bobtail Japonais, au pelage blanc marqué d’orange et aux yeux bleus lumineux. Elle aime les environnements calmes et les caresses délicates.",
   "image": "cat3.jpg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Calypso",
@@ -239,7 +239,7 @@
   "size": "moyen",
   "description": "Calypso est une chatte tricolore au regard intense et à la posture fière. Elle aime observer son entourage avec calme et assurance.",
   "image": "cat4.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Velours",
@@ -259,7 +259,7 @@
   "size": "moyen",
   "description": "Zéphyr est un Egyptian Mau élégant au pelage argenté tacheté et aux yeux dorés perçants. Agile et attentif, il aime se prélasser sur les rochers et observer son environnement.",
   "image": "cat6.jpg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Nectar",
@@ -269,7 +269,7 @@
   "size": "moyen",
   "description": "Nectar est un chat au pelage crème et aux marques orangées délicates. Il charme par ses yeux bleus et sa voix douce.",
   "image": "cat7.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Sahara",
@@ -289,7 +289,7 @@
   "size": "moyen",
   "description": "Mocha est une chatte au pelage soyeux et aux yeux bleus profonds. Elle aime se poser dans les jardins fleuris et observer le monde avec douceur.",
   "image": "cat9.jpeg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Graphite",
@@ -299,7 +299,7 @@
   "size": "moyen",
   "description": "Graphite est un chat paisible au pelage gris soyeux et au regard vert perçant. Il aime se détendre sur les surfaces en bois et observer tranquillement son environnement.",
   "image": "cat10.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Pixel",
@@ -319,7 +319,7 @@
   "size": "moyen",
   "description": "Tao est un Ocicat au pelage doré tacheté et à l’allure féline. Curieux et vif, il aime explorer son territoire avec assurance.",
   "image": "cat12.jpg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Opale",
@@ -329,7 +329,7 @@
   "size": "moyen",
   "description": "Opale est une chatte gracieuse au pelage crème et aux yeux bleus lumineux. Curieuse et vive, elle aime observer le monde avec délicatesse.",
   "image": "cat13.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Lune",
@@ -349,7 +349,7 @@
   "size": "moyen",
   "description": "Brume est une British Longhair majestueuse au pelage gris clair et aux yeux ambrés. Elle aime les coins fleuris et les instants paisibles en plein air.",
   "image": "cat15.jpg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Cacao",
@@ -359,7 +359,7 @@
   "size": "moyen",
   "description": "Cacao est un Havana Brown élégant au pelage chocolat et aux yeux verts profonds. Il aime les ambiances feutrées et les moments de calme.",
   "image": "cat16.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Mistral",
@@ -379,7 +379,7 @@
   "size": "petit",
   "description": "Sésame est un Burmese au pelage brun chaud et aux yeux verts captivants. Il aime les coins douillets et les instants de calme.",
   "image": "cat18.jpg",
-  "refuge_id" :1
+  "refuge_id" :2
 },
 {
   "name": "Indigo",
@@ -389,7 +389,7 @@
   "size": "moyen",
   "description": "Indigo est un Siamois au pelage crème et aux extrémités brun foncé. Ses yeux bleus profonds et son allure élégante en font un compagnon fascinant.",
   "image": "cat19.jpg",
-  "refuge_id" :1
+  "refuge_id" :3
 },
 {
   "name": "Mango",

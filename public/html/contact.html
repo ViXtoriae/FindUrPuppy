@@ -342,3 +342,37 @@
     © 2025 AdoptMe — Projet pédagogique • Tous droits réservés
   </div>
 </footer>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const messageBox = document.getElementById("form-message");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // empêche le vrai envoi
+
+    // Désactiver le bouton + feedback en cours
+    const button = form.querySelector("button");
+    button.disabled = true;
+    button.innerHTML = '<i class="ri-loader-4-line ri-spin"></i> Envoi en cours...';
+
+    messageBox.className = "form-message";
+    messageBox.style.display = "block";
+    messageBox.textContent = "Connexion au serveur...";
+
+    // Simulation délai serveur
+    setTimeout(() => {
+      messageBox.className = "form-message success";
+      messageBox.textContent = "✅ Votre message a bien été envoyé ! Merci de nous avoir contactés.";
+
+      button.innerHTML = '<i class="ri-check-line"></i> Message envoyé';
+
+      // Réinitialisation du formulaire après quelques secondes
+      setTimeout(() => {
+        form.reset();
+        button.disabled = false;
+        button.innerHTML = '<i class="ri-send-plane-line"></i> Envoyer le message';
+      }, 3000);
+
+    }, 2000); // 2 secondes = faux temps serveur
+  });
+</script>

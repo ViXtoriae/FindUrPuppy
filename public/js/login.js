@@ -1,28 +1,57 @@
-// Gestion du formulaire de connexion
 document.addEventListener("DOMContentLoaded", () => {
-  const savedEmail = localStorage.getItem("user.email");
-  const savedPassword = localStorage.getItem("user.password");
+  const loginLink = document.getElementById("login-link");
+  const logoutBtn = document.getElementById("logout-btn");
+  const msg = document.getElementById("error-message");
+  const sessionEmail = localStorage.getItem("session");
 
-  if (savedEmail && savedPassword) {
-    document.getElementById("login-email").value = savedEmail;
-    document.getElementById("login-password").value = savedPassword;
-  }
-});
-
-// Soumission du formulaire
-document.getElementById("login-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const email = document.getElementById("login-email").value.trim();
-  const password = document.getElementById("login-password").value.trim();
-  const savedEmail = localStorage.getItem("user.email");
-  const savedPassword = localStorage.getItem("user.password");
-
-  const msg = document.getElementById("login-message");
-  if (email === savedEmail && password === savedPassword) {
-    msg.textContent = "Connexion réussie ✅";
+  // Verif si déjà connecté
+  if (sessionEmail) {
+    loginLink.style.display = "none";
+    logoutBtn.style.display = "inline";
+    msg.textContent = `Vous êtes déjà connecté en tant que ${sessionEmail} !`;
     msg.style.color = "green";
+    msg.style.display = "block";
   } else {
-    msg.textContent = "Identifiants incorrects ❌";
-    msg.style.color = "red";
+    loginLink.style.display = "inline";
+    logoutBtn.style.display = "none";
   }
+
+  // Déconnexion
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("session");
+    window.location.reload(); // Recharger la page
+  });
+
+  // Connexion
+  document.getElementById("login-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+      localStorage.setItem("session", email);
+      msg.textContent = `Connexion réussie ! Vous êtes connecté en tant que ${email} :D`;
+      msg.style.color = "green";
+      msg.style.display = "block";
+      loginLink.style.display = "none";
+      logoutBtn.style.display = "inline";
+    } else {
+      msg.textContent = "Identifiants incorrects :(";
+      msg.style.color = "red";
+      msg.style.display = "block";
+    }
+  });
+
+  // Mot de passe oublié via EmailJS
+  document.getElementById("forgot-link").addEventListener("click", function(e) {
+    e.preventDefault();
+    const email = document.getElementById("email").value.trim();
+    if (!email) { alert("Veuillez entrer votre email"); return; }
+    emailjs.send("service_yxvf2ib", "template_296qy0z", {to_email: email})
+      .then(()=> alert("Email de réinitialisation envoyé à " + email))
+      .catch(()=> alert("Erreur lors de l’envoi"));
+  });
 });

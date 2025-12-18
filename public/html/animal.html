@@ -32,6 +32,9 @@
 </nav>
 
 
+<!-- =============================
+     MAIN CONTENT
+============================= -->
   <section class="page-header">
     <h1> Animaux disponibles </h1>
   </section>
@@ -68,15 +71,25 @@
 </section>
 
 
-  <!-- Liste des animaux -->
-  <div class="animal-list" id="animalList"></div>
-  <!-- Popup -->
-    <div class="modal" id="animalModal">
-      <div class="modal-content">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <div id="modalDetails"></div>
-      </div>
+<!-- Liste des animaux -->
+<div class="animal-list" id="animalList"></div>
+<!-- Popup -->
+<div id="animalModal">
+  <div class="animal-modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+
+    <!-- Image à gauche -->
+    <div class="animal-modal-left">
+      <img id="animalImage" class="animal-modal-img" src="" alt="Animal">
     </div>
+
+    <!-- Texte à droite -->
+    <div class="animal-modal-right" id="modalDetails">
+      <!-- infos injectées par JS -->
+    </div>
+  </div>
+</div>
+
  
   <script src="../js/animals.js"></script>
 

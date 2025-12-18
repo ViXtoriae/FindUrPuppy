@@ -1,6 +1,6 @@
 // Gestion de l'affichage des animaux, des filtres et des modales
 
-//Menu Hamburger
+// Menu Hamburger
 function toggleMenu() {
   const menu = document.getElementById("navMenu");
   menu.classList.toggle("active");
@@ -15,57 +15,50 @@ async function loadAnimals() {
     const container = document.getElementById("animalList");
     container.innerHTML = "";
     
-    // Création des cartes animaux
+    // Création des animal cards
     animals.forEach(animal => {
-      const imageSrc = animal.image && animal.image.trim() !== "" 
-        ? `/assets/${animal.image}` 
+      const imageSrc = (animal.image && animal.image.trim() !== "")
+        ? `/assets/${animal.image}`
         : `/assets/placeholder.jpg`;
-
-        console.log("Image pour", animal.name, ":", animal.image);
-      console.log("Chemin utilisé :", imageSrc);
-
-      
 
       const card = document.createElement("div");
       card.className = "animal-card";
-      // Contenu de la carte
       card.innerHTML = `
-        <img src="${imageSrc}" alt="${animal.name}" onerror="this.src='/assets/placeholder.jpg'">
+        <img src="${imageSrc}" alt="${animal.name}" 
+             onerror="this.src='/assets/placeholder.jpg'">
         <h3>${animal.name}</h3>
         <p class="animal-sex">${animal.sex}</p>
         <p class="animal-type">${animal.type}</p>
         <p class="animal-refuge">${animal.refuge_name || "Inconnu"}</p>
       `;
 
-
       // Au clic -> ouvrir popup
       card.addEventListener("click", () => {
         const modal = document.getElementById("animalModal");
+        const image = document.getElementById("animalImage");
         const details = document.getElementById("modalDetails");
 
-      details.innerHTML = `
-        <div class="animal-modal-content">
-          <div class="animal-modal-left">
-            <img 
-              src="${imageSrc}" 
-              alt="${animal.name}" 
-              class="animal-modal-img"
-            >
-          </div>
-          <div class="animal-modal-right">
-            <h2>${animal.name}</h2>
-            <p><strong>Type :</strong> ${animal.type}</p>
-            <p><strong>Âge :</strong> ${animal.age} ans</p>
-            <p><strong>Sexe :</strong> ${animal.sex}</p>
-            <p><strong>Taille :</strong> ${animal.size}</p><br>
-            <p>${animal.description}</p>
-            </br>
-            <p><strong>Refuge actuel :</strong> ${animal.refuge_name || "Inconnu"}</p>
-            <p><strong>Téléphone :</strong> ${animal.refuge_phone || "Non disponible"}</p>
-          </div>
-        </div>
-      `;
+        // Vérification image
+        const modalImageSrc = (animal.image && animal.image.trim() !== "")
+          ? `/assets/${animal.image}`
+          : `/assets/placeholder.jpg`;
 
+        // Afficher l'image
+        image.src = modalImageSrc;
+        image.alt = animal.name;
+        image.onerror = () => { image.src = "/assets/placeholder.jpg"; };
+
+        // Pop-up details
+        details.innerHTML = `
+          <h2>${animal.name}</h2>
+          <p><strong>Type :</strong> ${animal.type}</p>
+          <p><strong>Âge :</strong> ${animal.age} ans</p>
+          <p><strong>Sexe :</strong> ${animal.sex}</p>
+          <p><strong>Taille :</strong> ${animal.size}</p><br>
+          <p>${animal.description}</p><br>
+          <p><strong>Refuge actuel :</strong> ${animal.refuge_name || "Inconnu"}</p>
+          <p><strong>Téléphone :</strong> ${animal.refuge_phone || "Non disponible"}</p>
+        `;
 
         modal.style.display = "flex";
       });
@@ -98,7 +91,7 @@ async function loadAnimals() {
   }
 }
 
-//Recup depuis index
+// Récupération des paramètres depuis index.html
 function getQueryParams() {
   const params = new URLSearchParams(window.location.search);
   return {
@@ -109,8 +102,7 @@ function getQueryParams() {
   };
 }
 
-
-//Filtre
+// Application des filtres
 function applyFilters() {
   const searchValue = document.getElementById("searchInput").value.toLowerCase();
   const typeFilter = document.getElementById("filterType").value.toLowerCase();
@@ -127,25 +119,16 @@ function applyFilters() {
 
     let matches = true;
 
-    if (searchValue && !name.includes(searchValue)) {
-      matches = false;
-    }
-    if (typeFilter && type !== typeFilter) {
-      matches = false;
-    }
-    if (sexFilter && sex !== sexFilter) {
-      matches = false;
-    }
-    if (refugeFilter && refuge !== refugeFilter) {
-      matches = false;
-    }
+    if (searchValue && !name.includes(searchValue)) matches = false;
+    if (typeFilter && type !== typeFilter) matches = false;
+    if (sexFilter && sex !== sexFilter) matches = false;
+    if (refugeFilter && refuge !== refugeFilter) matches = false;
 
     card.style.display = matches ? "block" : "none";
   });
 }
 
-
-//Filtres reset
+// Reset des filtres
 function resetFilters() {
   document.getElementById("searchInput").value = "";
   document.getElementById("filterType").value = "";
@@ -153,12 +136,10 @@ function resetFilters() {
   document.getElementById("filterRefuge").value = "";
 
   const cards = document.querySelectorAll(".animal-card");
-  cards.forEach(card => {
-    card.style.display = "block";
-  });
+  cards.forEach(card => { card.style.display = "block"; });
 }
 
-// Recherche bouton entrée
+// Application des filtres au Enter
 document.getElementById("searchInput").addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -166,7 +147,7 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
   }
 });
 
-//Redirige
+// Redirection vers animal.html avec filtres
 function goToAnimals() {
   const search = document.getElementById("searchInput").value;
   const type = document.getElementById("filterType").value;
@@ -174,7 +155,6 @@ function goToAnimals() {
   const refuge = document.getElementById("filterRefuge").value;
 
   const params = new URLSearchParams();
-
   if (search) params.append("search", search);
   if (type) params.append("type", type);
   if (sex) params.append("sex", sex);
@@ -183,4 +163,5 @@ function goToAnimals() {
   window.location.href = "animal.html?" + params.toString();
 }
 
+// Lancement
 loadAnimals();
