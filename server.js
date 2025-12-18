@@ -116,8 +116,63 @@ app.post("/api/animals", async (req, res) => {
   }
 });
 
+// Update animal
+app.put("/api/animals/:id", async (req, res) => {
+  const animalId = req.params.id;
+  const { name, type, age, sex, size, description, image, refuge_id } = req.body;
 
-// 5 animaux aléatoires avec infos refuge
+  try {
+    const [result] = await db.query(
+      `UPDATE animals 
+       SET name = ?, type = ?, age = ?, sex = ?, size = ?, description = ?, image = ?, refuge_id = ?
+       WHERE id = ?`,
+      [name, type, age, sex, size, description, image, refuge_id, animalId]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Animal non trouvé" });
+    }
+
+    res.json({
+      id: animalId,
+      name,
+      type,
+      age,
+      sex,
+      size,
+      description,
+      image,
+      refuge_id
+    });
+  } catch (err) {
+    console.error("Erreur PUT /api/animals/:id :", err);
+    res.status(500).json({ error: "Erreur serveur" });
+  }
+});
+
+// Delete animal
+app.delete("/api/animals/:id", async (req, res) => {
+  const animalId = req.params.id;
+
+  try {
+    const [result] = await db.query(
+      "DELETE FROM animals WHERE id = ?",
+      [animalId]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Animal non trouvé" });
+    }
+
+    res.json({ message: `Animal (ID: ${animalId}) deleted !` });
+  } catch (err) {
+    console.error("Erreur DELETE /api/animals/:id :", err);
+    res.status(500).json({ error: "Erreur serveur" });
+  }
+});
+
+
+// 5 animaux aléatoires avec infos refuge pour swipe
 app.get("/api/animals/random", async (req, res) => {
   try {
     const [rows] = await db.query(`
