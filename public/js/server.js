@@ -11,7 +11,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Simule une base de données
+// Simulated database
 let users = [];
 
 // Route inscription 
@@ -23,7 +23,7 @@ app.post("/register", async (req, res) => {
     return res.json({ success: false, message: "Champs manquants." });
   }
 
-  // Vérifie si email déjà utilisé
+  // Vérification email already used
   if (users.some(u => u.email === email)) {
     return res.json({ success: false, message: "Email déjà utilisé." });
   }
@@ -31,7 +31,7 @@ app.post("/register", async (req, res) => {
   // Hash du mot de passe
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Stockage utilisateur
+  // Stockage user
   users.push({
     email,
     password: hashedPassword,
@@ -56,13 +56,13 @@ app.use(express.json());
 app.post("/register", (req, res) => {
   const { email, password } = req.body;
 
-  // Exemple de logique basique
+  // Vérification champs
   if (!email || !password) {
     return res.json({ success: false, message: "Champs manquants." });
   }
 
-  // Ici tu pourrais enregistrer en BDD
+  // Enregistrement user
   return res.json({ success: true, message: "Compte créé avec succès 🎉" });
 });
 
-app.listen(3000, () => console.log("Serveur lancé sur http://localhost:3000"));
+app.listen(3000, () => console.log("Serveur lancé sur http://localhost:3000/html/index.html"));

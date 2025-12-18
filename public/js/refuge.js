@@ -1,3 +1,6 @@
+// Gestion de l'affichage des refuges et de leurs détails
+
+// Chargement des refuges depuis l'API
 async function loadRefuges() {
   const response = await fetch("http://localhost:3000/api/refuges");
   const refuges = await response.json();
@@ -21,6 +24,7 @@ async function loadRefuges() {
   });
 }
 
+// Affichage des détails du refuge dans une modal
 async function showRefugeModal(refuge) {
   const modal = document.getElementById("refugeModal");
   const details = document.getElementById("refugeDetails");
@@ -51,15 +55,10 @@ async function showRefugeModal(refuge) {
 
   modal.style.display = "flex";
 }
-
+// Fermer la modal
 function closeModal() {
   document.getElementById("refugeModal").style.display = "none";
 }
 
 window.onload = loadRefuges;
 
-function closeModal() {
-  document.getElementById("refugeModal").style.display = "none";
-}
-
-window.onload = loadRefuges;

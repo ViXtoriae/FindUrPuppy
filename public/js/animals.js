@@ -1,9 +1,12 @@
+// Gestion de l'affichage des animaux, des filtres et des modales
+
 //Menu Hamburger
 function toggleMenu() {
   const menu = document.getElementById("navMenu");
   menu.classList.toggle("active");
 }
 
+// Chargement des animaux depuis l'API
 async function loadAnimals() {
   try {
     const response = await fetch("http://localhost:3000/api/animals");
@@ -12,7 +15,7 @@ async function loadAnimals() {
     const container = document.getElementById("animalList");
     container.innerHTML = "";
     
-
+    // Création des cartes animaux
     animals.forEach(animal => {
       const imageSrc = animal.image && animal.image.trim() !== "" 
         ? `/assets/${animal.image}` 
@@ -25,16 +28,17 @@ async function loadAnimals() {
 
       const card = document.createElement("div");
       card.className = "animal-card";
+      // Contenu de la carte
       card.innerHTML = `
-  <img src="${imageSrc}" alt="${animal.name}" onerror="this.src='/assets/placeholder.jpg'">
-  <h3>${animal.name}</h3>
-  <p class="animal-sex">${animal.sex}</p>
-  <p class="animal-type">${animal.type}</p>
-  <p class="animal-refuge">${animal.refuge_name || "Inconnu"}</p>
-`;
+        <img src="${imageSrc}" alt="${animal.name}" onerror="this.src='/assets/placeholder.jpg'">
+        <h3>${animal.name}</h3>
+        <p class="animal-sex">${animal.sex}</p>
+        <p class="animal-type">${animal.type}</p>
+        <p class="animal-refuge">${animal.refuge_name || "Inconnu"}</p>
+      `;
 
 
-      // Au clic → ouvrir popup
+      // Au clic -> ouvrir popup
       card.addEventListener("click", () => {
         const modal = document.getElementById("animalModal");
         const details = document.getElementById("modalDetails");
@@ -82,6 +86,7 @@ async function loadAnimals() {
       }
     });
 
+    // Recherche depuis index.html
     const { search, type, sex, refuge } = getQueryParams();
     document.getElementById("searchInput").value = search; 
     document.getElementById("filterType").value = type; 

@@ -53,7 +53,7 @@ if (reviewForm) {
             });
 
             document.getElementById("reviewForm").reset();
-            loadReviews(); // rafraîchit automatiquement
+            loadReviews(); // automatic refreash
 
         } catch (error) {
             console.error("Erreur lors de l’envoi de l’avis :", error);

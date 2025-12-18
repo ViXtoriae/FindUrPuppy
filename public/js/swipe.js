@@ -1,3 +1,4 @@
+// Gestion du swipe des cartes d'animaux
 const container = document.getElementById("cardContainer");
 const likesCount = document.getElementById("likesCount");
 
@@ -42,6 +43,7 @@ async function loadSwipeAnimals() {
 
 loadSwipeAnimals();
 
+// Gérer le swipe
 function swipe(direction) {
   const cards = container.querySelectorAll(".card");
   const activeCard = cards[cards.length - 1];
@@ -79,6 +81,7 @@ function swipe(direction) {
   }, 500);
 }
 
+// Annuler le dernier swipe
 function undoSwipe() {
   if (history.length === 0) return;
 
@@ -94,12 +97,14 @@ function undoSwipe() {
   reorganizeCards();
 }
 
+// MaJ du badge des likes
 function updateBadge() {
   if (likesCount) {
     likesCount.textContent = likedAnimals.length;
   }
 }
 
+// Réorganisation des cartes après swipe
 function reorganizeCards() {
   const cards = container.querySelectorAll(".card");
 

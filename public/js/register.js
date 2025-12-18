@@ -1,5 +1,5 @@
 console.log("register.js chargé");
-
+// Gérer le formulaire d'inscription
 document.getElementById("register-form").addEventListener("submit", function(e) {
   e.preventDefault();
 

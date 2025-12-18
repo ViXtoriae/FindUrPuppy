@@ -1,3 +1,4 @@
+// Gestion du formulaire de connexion
 document.addEventListener("DOMContentLoaded", () => {
   const savedEmail = localStorage.getItem("user.email");
   const savedPassword = localStorage.getItem("user.password");
@@ -8,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Soumission du formulaire
 document.getElementById("login-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const email = document.getElementById("login-email").value.trim();
