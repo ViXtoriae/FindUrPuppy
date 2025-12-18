@@ -15,7 +15,7 @@ const db = await mysql.createConnection({
   database: "adoptme"
 });
 app.use(express.static(path.join(process.cwd(), "public")));
-console.log("Connexion MySQL établie !!! ✅");
+console.log("Connexion MySQL établie !!! ");
 
 
 // Tous les animaux avec infos refuge
